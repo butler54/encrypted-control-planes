@@ -1,0 +1,6 @@
+apiVersion: v2
+description: A simple helm chart to deploy a CM
+keywords:
+- pattern
+name: test
+version: 0.0.1
