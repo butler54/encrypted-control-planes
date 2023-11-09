@@ -1,11 +1,17 @@
-# Multicloud Gitops
+# Encrypted control planes
+This repo is meant to deploy the underlying infrastructure to support encrypted control planes with HCP
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+## Stages of demo build 
+### 1: HCP is assumed configured
+Just need the underlying encryption tech to be deployed
 
-[Live build status](https://validatedpatterns.io/ci/?pattern=mcgitops)
+### 1: HCP needs to be configured
+Deploy onto a bare OCP cluster.
 
-## Start Here
+### 2: Automated cluster as a service
+Here we goet 
 
-If you've followed a link to this repository, but are not really sure what it contains
-or how to use it, head over to [Multicloud GitOps](https://validatedpatterns.io/patterns/multicloud-gitops/)
-for additional context and installation instructions
+
+## What is all this code?
+
+This repo is based on the [multicloud-gitops validated pattern](https://github.com/validatedpatterns/multicloud-gitops).

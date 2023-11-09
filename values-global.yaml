@@ -1,6 +1,5 @@
----
 global:
-  pattern: multicloud-gitops
+  pattern: encrypted-control-planes
 
   options:
     useCSV: false
