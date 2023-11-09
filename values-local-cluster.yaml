@@ -4,6 +4,8 @@ clusterGroup:
 
   namespaces:
   - test
+  - vault
+  - golang-external-secrets
   subscriptions:
   # WE don't manage subscriptions
   # acm:
@@ -14,6 +16,7 @@ clusterGroup:
 
   projects:
   - test
+  - local-cluster
 
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -44,7 +47,17 @@ clusterGroup:
       project: test
       path: charts/all/test
 
+    vault:
+      name: vault
+      namespace: vault
+      project: local-cluster
+      path: common/hashicorp-vault
 
+    golang-external-secrets:
+      name: golang-external-secrets
+      namespace: golang-external-secrets
+      project: local-cluster
+      path: common/golang-external-secrets
 
   imperative:
   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
