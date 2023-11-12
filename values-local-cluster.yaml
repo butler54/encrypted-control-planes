@@ -2,6 +2,9 @@ clusterGroup:
   name: local-cluster
   isHubCluster: true
 
+
+  operatorgroupExcludes:
+  - ack-system
   namespaces:
   - test
   - vault
