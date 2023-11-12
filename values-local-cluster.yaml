@@ -18,11 +18,11 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.8
       #csv: advanced-cluster-management.v2.6.1
-    s3:
-      name: ack-s3-controller
-      namespace: ack-system
-      channel: alpha
-      source: community-operators
+    # s3:
+    #   name: ack-s3-controller
+    #   namespace: ack-system
+    #   channel: alpha
+    #   source: community-operators
   projects:
   - test
   - local-cluster
@@ -71,11 +71,11 @@ clusterGroup:
       project: local-cluster
       path: common/golang-external-secrets
 
-    s3:
-      name: s3-controller
-      namespace: ack-system
-      project: s3
-      path: charts/all/ack-s3
+    # s3:
+    #   name: s3-controller
+    #   namespace: ack-system
+    #   project: s3
+    #   path: charts/all/ack-s3
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
