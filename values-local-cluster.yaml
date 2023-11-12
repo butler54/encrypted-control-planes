@@ -7,7 +7,7 @@ clusterGroup:
   - vault
   - golang-external-secrets
   - ack-system
-
+  - open-cluster-management
   subscriptions:
     # WE don't manage subscriptions
     acm:
