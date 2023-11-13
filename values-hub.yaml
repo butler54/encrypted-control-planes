@@ -1,5 +1,5 @@
 clusterGroup:
-  name: local-cluster
+  name: hub
   isHubCluster: true
 
 
