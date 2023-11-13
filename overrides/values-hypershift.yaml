@@ -3,7 +3,7 @@ global:
   useExternalSecrets: true
   s3:
     createBucket: false
-    region:
+    region: ap-southeast-1
     bucketName:
     additionalTags:
 
