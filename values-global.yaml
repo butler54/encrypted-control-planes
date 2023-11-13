@@ -7,7 +7,7 @@ global:
     installPlanApproval: Automatic
 
 main:
-  clusterGroupName: local-cluster
+  clusterGroupName: hub
 
   multiSourceConfig:
     enabled: true

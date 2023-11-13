@@ -3,8 +3,6 @@ clusterGroup:
   isHubCluster: true
 
 
-  operatorgroupExcludes:
-  - ack-system
   namespaces:
   - test
   - vault
@@ -12,7 +10,6 @@ clusterGroup:
   - ack-system
   - open-cluster-management
   subscriptions:
-    # WE don't manage subscriptions
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
@@ -53,11 +50,6 @@ clusterGroup:
   #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
 
   applications:
-    test:
-      name: test
-      namespace: test
-      project: test
-      path: charts/all/test
 
     vault:
       name: vault
