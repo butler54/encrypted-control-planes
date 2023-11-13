@@ -1,5 +1,5 @@
 clusterGroup:
-  name: hub
+  name: local-cluster
   isHubCluster: true
 
 
@@ -50,7 +50,16 @@ clusterGroup:
   #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
 
   applications:
-
+    acm:
+      name: acm
+      namespace: open-cluster-management
+      project: local-cluster
+      path: common/acm
+      ignoreDifferences:
+      - group: internal.open-cluster-management.io
+        kind: ManagedClusterInfo
+        jsonPointers:
+        - /spec/loggingCA
     vault:
       name: vault
       namespace: vault
