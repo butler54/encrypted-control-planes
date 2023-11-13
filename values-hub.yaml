@@ -1,5 +1,5 @@
 clusterGroup:
-  name: local-cluster
+  name: hub
   isHubCluster: true
 
 
@@ -63,11 +63,6 @@ clusterGroup:
       project: local-cluster
       path: common/golang-external-secrets
 
-    # s3:
-    #   name: s3-controller
-    #   namespace: ack-system
-    #   project: s3
-    #   path: charts/all/ack-s3
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
