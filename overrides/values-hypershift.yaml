@@ -2,9 +2,9 @@
 global:
   useExternalSecrets: true
   s3:
-    createBucket: false
+    createBucket: true
     region: ap-southeast-1
-    bucketName:
+    bucketName: hypershift
     additionalTags:
 
   buildconfig:
