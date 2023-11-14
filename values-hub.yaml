@@ -9,6 +9,7 @@ clusterGroup:
   - golang-external-secrets
   - ack-system
   - open-cluster-management
+  - multicluster-engine
 
   subscriptions:
     acm:
@@ -78,6 +79,12 @@ clusterGroup:
       namespace: ack-system
       project: s3
       path: charts/all/ack-s3
+    hypershift:
+      name: hypershift
+      namespace: multicluster-engine
+      project: hypershift
+      path: charts/all/hypershift
+
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
