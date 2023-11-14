@@ -4,7 +4,7 @@ global:
   s3:
     createBucket: true
     region: ap-southeast-1
-    bucketName: hypershift-gpte
+    bucketName: hypershift-tb8df
     additionalTags:
 
   buildconfig:

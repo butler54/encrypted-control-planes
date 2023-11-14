@@ -19,14 +19,6 @@ global:
   # Provision External Secret resources: default true
   useExternalSecrets: true
 
-  # S3 bucket logistical information
-  # s3:
-  #   createBucket: true
-  #   region:
-  #   bucketName:
-  #   createBucketPolicy: true
-  #   additionalTags: []
-
 # End global parameters
 
 # Default parameters for the ACK S3 Controller
