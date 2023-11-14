@@ -1,0 +1,35 @@
+{{- if .Values.global.useExternalSecrets }}
+---
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: hypershift-eso-aws-dns
+  namespace: local-cluster
+  annotations:
+    argocd.argoproj.io/sync-wave: '5'
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: {{ .Values.secretStore.name }}
+    kind: {{ .Values.secretStore.kind }}
+  target:
+    name: hypershift-operator-external-dns-credential
+    template:
+      mergePolicy: Merge
+      type: Opaque
+      data:
+        provider:
+        domain-filter:
+        aws-access-key-id:
+        aws-secret-access-key:
+        region: {{ .Values.global.s3.region }}
+        bucket: {{ .Values.global.s3.bucketName }}
+  dataFrom:
+  - extract:
+      key: {{ .Values.awsCredentials.key }}
+{{- end }}
+
+
+# oc patch mce multiclusterengine --type=merge -p '{"spec":{"overrides":{"components":[{"name":"hypershift-preview","enabled": true}]}}}' 
+
+# oc patch mce multiclusterengine --type=merge -p '{"spec":{"overrides":{"components":[{"name":"hypershift-local-hosting","enabled": true}]}}}' 
