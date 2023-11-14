@@ -9,16 +9,16 @@ clusterGroup:
   isHubCluster: false
 
   namespaces:
-    - config-demo
-    - hello-world
-    - golang-external-secrets
+  - config-demo
+  - hello-world
+  - golang-external-secrets
 
   subscriptions:
 
   projects:
-    - eso
-    - config-demo
-    - hello-world
+  - eso
+  - config-demo
+  - hello-world
 
   applications:
     golang-external-secrets:
@@ -57,7 +57,8 @@ clusterGroup:
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
-    - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
+  - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
+  - '/overrides/values-hypershift.yaml'
 
   # To mirror the "Classic" magic include structure, the clusterGroup would need all of these:
   # sharedValueFiles:
