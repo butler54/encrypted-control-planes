@@ -11,7 +11,7 @@ secretStore:
 
 # Secret provisioned for the HyperShift installation 
 awsCredentials:
-  key: secret/data/awsCreds
+  key: secret/data/hub/awsCreds
 
 # Begin global parameters
 global:
