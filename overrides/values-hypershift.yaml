@@ -5,7 +5,7 @@ global:
     createBucket: true
     region: ap-southeast-1
     bucketName: hypershift-tb8df
-    additionalTags:
+    additionalTags: []
 
   buildconfig:
     git:
