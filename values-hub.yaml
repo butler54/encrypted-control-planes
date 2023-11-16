@@ -27,6 +27,7 @@ clusterGroup:
   - local-cluster
   - s3
   - hypershift
+  - config
 
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -79,12 +80,18 @@ clusterGroup:
       namespace: ack-system
       project: s3
       path: charts/all/ack-s3
+
     hypershift:
       name: hypershift
       namespace: multicluster-engine
       project: hypershift
       path: charts/all/hypershift
 
+    htpassword:
+      name: htpassword
+      namespace: openshift-config
+      project: config
+      path: charts/all/htpassword
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

@@ -1,0 +1,43 @@
+# A more formal description of this format can be found here:
+# https://github.com/hybrid-cloud-patterns/common/tree/main/ansible/roles/vault_utils#values-secret-file-format
+
+version: "2.0"
+# Ideally you NEVER COMMIT THESE VALUES TO GIT (although if all passwords are
+# automatically generated inside the vault this should not really matter)
+
+secrets:
+
+
+
+# If you use clusterPools you will need to uncomment the following lines
+- name: aws
+  vaultPrefixes:
+  - global
+  fields:
+  - name: AWS_ACCESS_KEY_ID
+    value: ''
+  - name: AWS_SECRET_ACCESS_KEY
+    value: ''
+- name: awsCreds
+  fields:
+  - name: credentials
+    path: ~/.aws/credentials
+
+- name: htpasswd
+  vaultPrefixes:
+  - global
+  fields:
+  - name: content
+    path: ~/ocp.htpasswd
+#- name: publickey
+#  fields:
+#  - name: content
+#    path: ~/.ssh/id_rsa.pub
+#- name: privatekey
+#  fields:
+#  - name: content
+#    path: ~/.ssh/id_rsa
+#- name: openshiftPullSecret
+#  fields:
+#  - name: content
+#    path: ~/.pullsecret.json
