@@ -28,6 +28,7 @@ clusterGroup:
   - s3
   - hypershift
   - test-config
+  - default
 
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -87,11 +88,11 @@ clusterGroup:
       project: hypershift
       path: charts/all/hypershift
 
-    # htpassword:
-    #   name: htpassword
-    #   namespace: openshift-config
-    #   project: config
-    #   path: charts/all/htpassword
+    htpassword:
+      name: htpassword
+      namespace: openshift-config
+      project: config
+      path: charts/all/htpassword
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
