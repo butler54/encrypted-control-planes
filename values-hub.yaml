@@ -91,7 +91,7 @@ clusterGroup:
     htpassword:
       name: htpassword
       namespace: openshift-config
-      project: config
+      project: test-config
       path: charts/all/htpassword
 
   imperative:
