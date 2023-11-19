@@ -1,0 +1,13 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cte-csi-controller-binding
+  namespace: {{ .Values.cte.cteNS }}
+subjects:
+  - kind: ServiceAccount
+    name: cte-csi-controller
+    namespace: {{ .Values.cte.cteNS }}
+roleRef:
+  kind: ClusterRole
+  name: cte-csi-controller-ac
+  apiGroup: rbac.authorization.k8s.io
