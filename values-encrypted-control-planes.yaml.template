@@ -27,7 +27,7 @@ secrets:
   vaultPrefixes:
   - global
   fields:
-  - name: content
+  - name: htpasswd
     path: ~/ocp.htpasswd
 #- name: publickey
 #  fields:
