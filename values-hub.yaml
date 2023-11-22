@@ -10,6 +10,7 @@ clusterGroup:
   - ack-system
   - open-cluster-management
   - multicluster-engine
+  - cte
 
   subscriptions:
     acm:
@@ -22,11 +23,19 @@ clusterGroup:
       namespace: ack-system
       channel: alpha
       source: community-operators
+
+    cte:
+      name: CteK8sOperator
+      namespace: openshift-operators
+      channel: stable
+      source: certified-operators
+
   projects:
   - test
   - local-cluster
   - s3
   - hypershift
+  - cte
   - test-config
   - default
 
@@ -93,6 +102,12 @@ clusterGroup:
       namespace: openshift-config
       project: test-config
       path: charts/all/htpassword
+
+    cte-scc:
+      name: cte-scc
+      namespace: cte
+      project: cte
+      path: charts/all/cte-scc
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
