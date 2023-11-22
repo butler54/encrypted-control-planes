@@ -25,7 +25,7 @@ clusterGroup:
       source: community-operators
 
     cte:
-      name: CteK8sOperator
+      name: ctek8soperator-sub
       namespace: openshift-operators
       channel: stable
       source: certified-operators
