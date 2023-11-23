@@ -30,7 +30,7 @@ spec:
             region: ap-southeast-1
           credentialsSecret:
             name: aws-cloud-credentials
-          instanceType: m5zn.metal
+          instanceType: m5.metal
           metadata:
             creationTimestamp: null
           blockDevices:
