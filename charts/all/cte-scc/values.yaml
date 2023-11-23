@@ -1,0 +1,11 @@
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+pullSecret:
+  key:
+
+global:
+
+  # Provision External Secret resources: default true
+  useExternalSecrets: true
