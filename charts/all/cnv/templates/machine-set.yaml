@@ -11,6 +11,7 @@ spec:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
       machine.openshift.io/cluster-api-machineset:  cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
+  template:
     metadata:
       labels:
         machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
