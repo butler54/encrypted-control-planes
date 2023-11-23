@@ -32,8 +32,9 @@ clusterGroup:
       source: certified-operators
 
     cnv:
-      name:
-      namespace:
+      name: kubevirt-hyperconverged
+      namespace: openshift-cnv
+      channel: stable
 
   projects:
   - test
