@@ -4,3 +4,4 @@
 
 global:
   nestedVirt: true
+  awsMachinePool: true
