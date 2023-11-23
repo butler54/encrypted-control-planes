@@ -44,6 +44,7 @@ clusterGroup:
   - cte
   - test-config
   - default
+  - cnv
 
   # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
   # We can use self-referential variables because the chart calls the tpl function with these variables defined
@@ -115,6 +116,11 @@ clusterGroup:
       project: cte
       path: charts/all/cte-scc
 
+    cnv:
+      name: cnv
+      namespace: openshift-cnv
+      project: cnv
+      path: charts/all/cnv
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
