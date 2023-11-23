@@ -3,7 +3,7 @@ secretStore:
   kind: ClusterSecretStore
 
 pullSecret:
-  key:
+  key: secret/data/global/cteDockerIO
 
 global:
 
