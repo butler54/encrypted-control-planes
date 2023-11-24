@@ -1,3 +1,4 @@
+{{- if .Values.global.nestedVirt }}
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
@@ -74,3 +75,4 @@ spec:
           apiVersion: machine.openshift.io/v1beta1
           iamInstanceProfile:
             id: cluster-fdjpc-8zq9j-worker-profile
+{{- end }}
