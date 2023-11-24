@@ -3,5 +3,5 @@
 # Declare variables to be passed into your templates.
 
 global:
-  nestedVirt: true
+  nestedVirt: false
   awsMachinePool: true
