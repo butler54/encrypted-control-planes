@@ -1,4 +1,4 @@
-{{- if .Values.global.nestedVirt }}
+{{- if .Values.global.awsMachinePool }}
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
