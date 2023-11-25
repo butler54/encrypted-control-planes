@@ -5,6 +5,11 @@
 # x509 CA unknown error.
 # Uncomment the following if you are using IBM ROKS (IPI installs on IBM Cloud are unaffected)
 
-# golangExternalSecrets:
-#   caProvider:
-#     enabled: false
+golangExternalSecrets:
+  caProvider:
+    enabled: false
+
+
+global:
+  IBMCloud: true
+  nestedVirt: false
