@@ -17,7 +17,7 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.8
+      channel: release-2.9
       #csv: advanced-cluster-management.v2.6.1
     s3:
       name: ack-s3-controller
