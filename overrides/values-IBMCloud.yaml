@@ -12,4 +12,4 @@ golangExternalSecrets:
 
 global:
   IBMCloud: true
-  nestedVirt: false
+  nestedVirt: true
