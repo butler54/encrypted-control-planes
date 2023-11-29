@@ -36,6 +36,13 @@ clusterGroup:
       namespace: openshift-cnv
       channel: stable
 
+    caas:
+      name: cluster-aas-operator
+      namespace: openshift-operators
+      channel: alpha
+      source: community-operators
+
+
   projects:
   - test
   - local-cluster
