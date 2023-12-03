@@ -4,7 +4,7 @@ apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
   name: hypershift-eso-aws
-  namespace: local-cluster
+  namespace: cluster
   annotations:
     argocd.argoproj.io/sync-wave: '5'
 spec:

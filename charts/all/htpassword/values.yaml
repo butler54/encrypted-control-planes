@@ -9,3 +9,5 @@ htpasswordCreds:
   key: secret/data/global/htpasswd
 
 
+global:
+  useExternalSecrets: true
