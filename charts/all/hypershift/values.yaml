@@ -13,9 +13,12 @@ secretStore:
 awsCredentials:
   key: secret/data/hub/awsCreds
 
+
 # Begin global parameters
 global:
   # Provision External Secret resources: default true
   useExternalSecrets: true
-
+  s3:
+    region: ''
+    bucketName: ''
 # End global parameters
