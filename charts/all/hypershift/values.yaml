@@ -15,25 +15,7 @@ awsCredentials:
 
 # Begin global parameters
 global:
-  hubClusterDomain: hub.example.com
-  localClusterDomain: region-one.example.com
-
   # Provision External Secret resources: default true
   useExternalSecrets: true
-
-
-  # Parameters for the imagestream
-  imagestream:
-    sourceImage: image-registry.openshift-image-registry.svc:5000/openshift/cli
-    tag: latest
-
-  # Parameters for the buildconfig
-  buildconfig:
-    git:
-      uri: https://github.com/validatedpatterns-sandbox/hypershift
-      ref: main
-    contextDir: containerfiles
-    dockerfilePath: Containerfile
-    triggers: ConfigChange
 
 # End global parameters
