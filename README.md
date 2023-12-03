@@ -6,7 +6,6 @@ Deploying hosted control planes together with CipherTrust Transparent Encryption
 
 This repo is based on the [multicloud-gitops validated pattern](https://github.com/validatedpatterns/multicloud-gitops).
 
-
 ## Cluster bootstrapping 
 
 ### Required secrets
