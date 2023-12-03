@@ -1,0 +1,9 @@
+# Default values for demo-template.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+ocpVersion: 4.13
+baseDomain: example.com
+infra:
+  region: ap-southeast-2
+  creds: my-infra-secret

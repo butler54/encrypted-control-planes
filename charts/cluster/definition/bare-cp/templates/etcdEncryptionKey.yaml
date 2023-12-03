@@ -1,0 +1,11 @@
+
+apiVersion: v1
+data:
+  key: /WjHXlMu1K416/ZnwQQEcC1CfKC/DnWrMRiHcGySsPA=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: kubevirt2-etcd-encryption-key
+  namespace: local-cluster
+type: Opaque
+---

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: devconf-template
+description: Hypershift cluster template
+type: application
+version: 0.0.3
+appVersion: "0.0.1"

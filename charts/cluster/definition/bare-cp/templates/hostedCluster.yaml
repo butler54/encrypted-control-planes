@@ -1,0 +1,77 @@
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  creationTimestamp: null
+  name: kubevirt2
+  namespace: local-cluster
+spec:
+  autoscaling: {}
+  controllerAvailabilityPolicy: HighlyAvailable
+  dns:
+    baseDomain: sandbox949.opentlc.com
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+          storageClassName: gp3-csi
+        restoreSnapshotURL: null
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+  platform:
+    type: None
+  pullSecret:
+    name: kubevirt2-pull-secret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.13.4-x86_64
+  secretEncryption:
+    aescbc:
+      activeKey:
+        name: kubevirt2-etcd-encryption-key
+    type: aescbc
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: NodePort
+  - service: OAuthServer
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: NodePort
+  - service: OIDC
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: None
+  - service: Konnectivity
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: NodePort
+  - service: Ignition
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: NodePort
+  - service: OVNSbDb
+    servicePublishingStrategy:
+      nodePort:
+        address: 10.0.17.157
+      type: NodePort
+  sshKey:
+    name: kubevirt2-ssh-key
+status:
+  controlPlaneEndpoint:
+    host: ""
+    port: 0
+---
