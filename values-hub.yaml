@@ -11,7 +11,8 @@ clusterGroup:
   - multicluster-engine
   - openshift-cnv
   - cte
-  - cluster - ansible-automation-platform
+  - cluster
+  - ansible-automation-platform
   subscriptions:
     acm:
       name: advanced-cluster-management
