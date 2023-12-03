@@ -8,11 +8,6 @@ infra:
   baseDomain: blueprints.rhecoeng.com
 
 templates:
-# - name: aws-single-node
-#   definition: 'aws'
-#   bootstrap: 'kubelet'
-#   cp-replicas: 1
-#   nodes: 1
 
 - name: control-plane-only
   definition: 'cp-only'
@@ -24,10 +19,6 @@ templates:
   cp-replicas: 3
   nodes: 0
 
-# - name: kubevirt
-#   definition: 'kubevirt'
-#   cp-replicas: 3
-#   nodes: 1
 
 secretStore:
   name: vault-backend
@@ -38,6 +29,15 @@ secretStore:
 # {{ .Values.foo.bar }}
 # {{ end }}
 
+# - name: aws-single-node
+#   definition: 'aws'
+#   bootstrap: 'kubelet'
+#   cp-replicas: 1
+#   nodes: 1
+# - name: kubevirt
+#   definition: 'kubevirt'
+#   cp-replicas: 3
+#   nodes: 1
 
 # - name: global.repoURL
 #   value: 'https://github.com/butler54/encrypted-control-planes.git'
