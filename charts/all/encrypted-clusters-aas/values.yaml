@@ -1,0 +1,47 @@
+global:
+  dummy: 0
+
+infra:
+  name: hypershift
+  awsRegion: ap-southeast-2
+  location: north-pole
+  baseDomain: blueprints.rhecoeng.com
+
+templates:
+
+- name: control-plane-only
+  definition: 'cp-only'
+  cp-replicas: 1
+  nodes: 0
+
+- name: control-plane-only-ha
+  definition: 'cp-only-ha'
+  cp-replicas: 3
+  nodes: 0
+
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+
+# {{ if .Values.foo.bar }}
+# {{ .Values.foo.bar }}
+# {{ end }}
+
+# - name: aws-single-node
+#   definition: 'aws'
+#   bootstrap: 'kubelet'
+#   cp-replicas: 1
+#   nodes: 1
+
+# - name: global.repoURL
+#   value: 'https://github.com/butler54/encrypted-control-planes.git'
+# - name: global.targetRevision
+#   value: main
+# - name: global.hubClusterDomain
+#   value: apps.cluster-fdjpc.fdjpc.sandbox949.opentlc.com
+# - name: global.localClusterDomain
+#   value: apps.cluster-fdjpc.fdjpc.sandbox949.opentlc.com
+# - name: global.clusterDomain
+#   value: cluster-fdjpc.fdjpc.sandbox949.opentlc.com

@@ -1,0 +1,6 @@
+apiVersion: v2
+description: E
+keywords:
+- pattern
+name: encrypted-clusters-aas
+version: 0.0.1

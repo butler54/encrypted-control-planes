@@ -1,0 +1,53 @@
+{{- range .Values.templates }}
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: hypershift-{{ .name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  argocdNamespace: openshift-gitops
+  clusterDefinition:
+    destination:
+      namespace: demo
+      server: 'https://kubernetes.default.svc'
+    project: default
+    source:
+      path: charts/cluster/definition/{{ .defintion }}
+      repoURL: {{ $.Values.global.repoURL }}
+      targetRevision: {{ $.Values.global.targetRevision }}
+      helm:
+        parameters:
+        - name: stuff
+          value: hypershift-pull-secret
+        - name: sshSecretName
+          value: hypershift-sshkey
+    syncPolicy:
+      automated: {}
+  {{- if .bootstrap }}
+  clusterSetup:
+  - name: {{ .name }} Pattern Installation
+    spec:
+      destination:
+        namespace: demo
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        path: common/install
+        repoURL: {{ $.Values.global.repoURL }}
+        targetRevision: main
+        # no helm params required for simple service
+        # helm:
+        #   parameters:
+        #   - name: main.git.repoURL
+        #     value: $ARGOCD_APP_SOURCE_REPO_URL
+        #   - name: main.git.revision
+        #     value: $ARGOCD_APP_SOURCE_TARGET_REVISION
+        #   - name: main.git.clusterGroupName
+        #     value: hub
+      syncPolicy:
+        automated: {}
+    {{- end }}
+  cost: 2
+---
+{{- end }}

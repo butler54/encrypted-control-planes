@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  id_rsa: ""
+  id_rsa.pub: ""
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: kubevirt2-ssh-key
+  namespace: local-cluster
