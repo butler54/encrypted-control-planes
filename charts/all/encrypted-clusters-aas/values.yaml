@@ -34,10 +34,6 @@ secretStore:
 #   bootstrap: 'kubelet'
 #   cp-replicas: 1
 #   nodes: 1
-# - name: kubevirt
-#   definition: 'kubevirt'
-#   cp-replicas: 3
-#   nodes: 1
 
 # - name: global.repoURL
 #   value: 'https://github.com/butler54/encrypted-control-planes.git'

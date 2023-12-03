@@ -16,10 +16,9 @@ spec:
       path: charts/cluster/definition/{{ .defintion }}
       repoURL: {{ $.Values.global.repoURL }}
       targetRevision: {{ $.Values.global.targetRevision }}
-      global
       helm:
         parameters:
-        - name: n
+        - name: stuff
           value: hypershift-pull-secret
         - name: sshSecretName
           value: hypershift-sshkey
