@@ -1,4 +1,4 @@
-{{- if .Values.global.useExternalSecrets }}
+# presumes external secrets operator
 # this is a hack for now.
 ---
 apiVersion: "external-secrets.io/v1beta1"
@@ -19,5 +19,3 @@ spec:
   dataFrom:
   - extract:
       key: {{ .Values.cteReg.key }}
-{{- end }}
-
