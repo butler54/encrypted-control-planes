@@ -5,7 +5,7 @@ apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
   name: eso-cte-reg-token
-  namespace: {{ .Release.Namespace }}-{{ .Release.Name }}
+  namespace: '{{ .Release.Namespace }}-{{ .Release.Name }}'
 spec:
   refreshInterval: 15s
   secretStoreRef:
