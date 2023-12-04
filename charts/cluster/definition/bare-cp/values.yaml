@@ -2,8 +2,15 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-ocpVersion: 4.13
+ocpVersion: 4.14.3
 baseDomain: example.com
-infra:
-  region: ap-southeast-2
-  creds: my-infra-secret
+ocpArch: x86_64
+# must override
+NodePortAddress: 10.0.0.1
+
+cteReg:
+  key: values/data/global/cteregistrationtoken
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore

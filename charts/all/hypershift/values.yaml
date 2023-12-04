@@ -13,6 +13,9 @@ secretStore:
 awsCredentials:
   key: secret/data/hub/awsCreds
 
+ocpPullCreds:
+  key: secret/data/global/ocpPull
+
 
 # Begin global parameters
 global:

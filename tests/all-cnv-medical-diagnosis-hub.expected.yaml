@@ -1,0 +1,28 @@
+---
+# Source: cvn/templates/ingress-controller-override.yaml
+# Bad stuff could happen if this is not correct.
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: default
+  namespace: openshift-ingress-operator
+spec:
+  clientTLS:
+    clientCA:
+      name: ""
+    clientCertificatePolicy: ""
+  defaultCertificate:
+    name: ingress-certs-2023-11-17
+  httpCompression: {}
+  httpEmptyRequestsPolicy: Respond
+  httpErrorCodePages:
+    name: ""
+  replicas: 2
+  routeAdmission:
+    wildcardPolicy: WildcardsAllowed
+  routeSelector:
+    matchExpressions:
+    - key: hypershift.openshift.io/hosted-control-plane
+      operator: DoesNotExist
+  tuningOptions:
+    reloadInterval: 0s

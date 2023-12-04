@@ -1,21 +1,30 @@
----
-apiVersion: hypershift.openshift.io/v1beta1
+apiVersion: hypershift.openshift.io/v1alpha1
 kind: NodePool
 metadata:
-  creationTimestamp: null
-  name: kubevirt2
-  namespace: local-cluster
+  name: 'np-{{ .Release.Namespace }}-{{ .Release.Name }}'
 spec:
-  clusterName: kubevirt2
+  clusterName: {{ .Release.Namespace }}-{{ .Release.Name }}
   management:
     autoRepair: false
-    upgradeType: Replace
-  nodeDrainTimeout: 0s
+    replace:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+      strategy: RollingUpdate
+    upgradeType: InPlace
   platform:
-    type: None
+    kubevirt:
+      compute:
+        cores: 4
+        memory: 4096M
+      rootVolume:
+        diskImage:
+          containerDiskImage: quay.io/containerdisks/rhcos:4.10
+        persistent:
+          size: 20G
+        type: Persistent
+    type: KubeVirt
   release:
-    image: quay.io/openshift-release-dev/ocp-release:4.13.4-x86_64
-  replicas: 1
-status:
-  replicas: 0
----
+    image: >-
+      quay.io/openshift-release-dev/ocp-release:{{ .Values.ocpVersion }}-{{ .Values.ocpArch }}
+  replicas: ${ .nodepoolReplicas }

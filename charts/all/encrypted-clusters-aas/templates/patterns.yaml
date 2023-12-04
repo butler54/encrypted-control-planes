@@ -9,19 +9,34 @@ spec:
   argocdNamespace: openshift-gitops
   clusterDefinition:
     destination:
-      namespace: demo
+      namespace: {{ $.Values.namespace }}
       server: 'https://kubernetes.default.svc'
-    project: default
+    project: {{ $.Values.namespace }}
     source:
       path: charts/cluster/definition/{{ .defintion }}
       repoURL: {{ $.Values.global.repoURL }}
       targetRevision: {{ $.Values.global.targetRevision }}
       helm:
         parameters:
-        - name: stuff
-          value: hypershift-pull-secret
-        - name: sshSecretName
-          value: hypershift-sshkey
+{{- if $.Values.global.useExternalSecrets }}
+        - name: secret-store-name 
+          value: {{ $.Values.secretStore.name }}
+        - name: secret-store-kind
+          value: {{ $.Values.secretStore.kind }}
+{{- end }}
+        - name: cpPolicy
+          value: {{ .cpPolicy }}
+
+        - name: nodepoolReplicas
+          value: {{ .nodes }} 
+
+        - name: APIPublishingStrategy
+          value: {{ $.Values.APIPublishingStrategy }}
+        - name: baseDomain # Fixme should be different
+
+          value: {{ $.Values.baseDomain }}
+        - name: NodePortAddress
+          value: {{ $.Values.NodePortAddress }}
     syncPolicy:
       automated: {}
   {{- if .bootstrap }}
@@ -29,7 +44,7 @@ spec:
   - name: {{ .name }} Pattern Installation
     spec:
       destination:
-        namespace: demo
+        namespace: {{ $.Values.namespace }}
         server: 'https://kubernetes.default.svc'
       project: default
       source:

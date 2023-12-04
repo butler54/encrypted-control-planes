@@ -1,0 +1,106 @@
+---
+# Source: encrypted-clusters-aas/templates/sshkey-eso.yaml
+# this is a hack for now.
+---
+# Source: encrypted-clusters-aas/templates/patterns.yaml
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: hypershift-control-plane-only
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  argocdNamespace: openshift-gitops
+  clusterDefinition:
+    destination:
+      namespace: cluster
+      server: 'https://kubernetes.default.svc'
+    project: cluster
+    source:
+      path: charts/cluster/definition/
+      repoURL: https://github.com/butler54/encrypted-control-planes.git
+      targetRevision: main
+      helm:
+        parameters:
+        - name: secret-store-name 
+          value: vault-backend
+        - name: secret-store-kind
+          value: ClusterSecretStore
+        - name: cpPolicy
+          value: SingleReplica
+
+        - name: nodepoolReplicas
+          value: 0 
+
+        - name: APIPublishingStrategy
+          value: NodePort
+        - name: baseDomain # Fixme should be different
+
+          value: sandbox949.opentlc.com
+        - name: NodePortAddress
+          value: 10.0.0.1
+    syncPolicy:
+      automated: {}
+  cost: 2
+---
+# Source: encrypted-clusters-aas/templates/patterns.yaml
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: hypershift-control-plane-only-ha
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  argocdNamespace: openshift-gitops
+  clusterDefinition:
+    destination:
+      namespace: cluster
+      server: 'https://kubernetes.default.svc'
+    project: cluster
+    source:
+      path: charts/cluster/definition/
+      repoURL: https://github.com/butler54/encrypted-control-planes.git
+      targetRevision: main
+      helm:
+        parameters:
+        - name: secret-store-name 
+          value: vault-backend
+        - name: secret-store-kind
+          value: ClusterSecretStore
+        - name: cpPolicy
+          value: HighlyAvailable
+
+        - name: nodepoolReplicas
+          value: 0 
+
+        - name: APIPublishingStrategy
+          value: NodePort
+        - name: baseDomain # Fixme should be different
+
+          value: sandbox949.opentlc.com
+        - name: NodePortAddress
+          value: 10.0.0.1
+    syncPolicy:
+      automated: {}
+  cost: 2
+---
+# Source: encrypted-clusters-aas/templates/sshkey-eso.yaml
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: eso-ssh-key
+  namespace: clusters #FIXME pass across
+  annotations:
+    argocd.argoproj.io/sync-wave: '-10'
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: cluster-ssh-key
+    template:
+      type: Opaque
+  dataFrom:
+  - extract:
+      key: values/data/global/clusterssh

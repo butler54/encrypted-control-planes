@@ -1,25 +1,29 @@
+
+namespace: cluster
+project: cluster
 global:
-  dummy: 0
-
-infra:
-  name: hypershift
-  awsRegion: ap-southeast-2
-  location: north-pole
-  baseDomain: blueprints.rhecoeng.com
-
+  useExternalSecrets: true
+  targetRevision: main
+  repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
 templates:
-
 - name: control-plane-only
   definition: 'cp-only'
-  cp-replicas: 1
+  cpPolicy: SingleReplica
   nodes: 0
+  bootstrap: false
 
 - name: control-plane-only-ha
   definition: 'cp-only-ha'
-  cp-replicas: 3
+  cpPolicy: HighlyAvailable
   nodes: 0
+  bootstrap: false
 
+sshkey:
+  key: values/data/global/clusterssh
 
+APIPublishingStrategy: NodePort
+baseDomain: sandbox949.opentlc.com
+NodePortAddress: 10.0.0.1
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore

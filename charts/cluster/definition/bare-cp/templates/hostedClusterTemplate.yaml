@@ -1,0 +1,75 @@
+apiVersion: hypershift.openshift.io/v1alpha1
+kind: HostedCluster
+metadata:
+  name: '{{ .Release.Namespace }}-{{ .Release.Name }}'
+spec:
+  dns:
+    baseDomain: '{{ .Release.Namespace }}-{{ .Release.Name }}.{{ .Values.baseDomain }}'
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+          storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
+        restoreSnapshotURL: null
+        type: PersistentVolume
+    managementType: Managed
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+  platform:
+    type: None
+  pullSecret:
+    name: hypershift-pull-secret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:{{ .Values.ocpVersion }}-{{ .Values.ocpArch }}
+  # Fixme: this needs a dynamic key generated in vault / cluster at run time.
+  # vault is preferred as the objects are versioned.
+  # secretEncryption:
+  #   aescbc:
+  #     activeKey:
+  #       name: {{ .Release.Namespace }}-{{ .Release.Name }}-etcd-key
+  sshKey:
+    name: cluster-ssh-key
+  infraID: '{{ .Release.Namespace }}-{{ .Release.Name }}'
+  controllerAvailabilityPolicy: {{ .Values.cpPolicy }}
+  
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      type: {{ .Values.APIPublishingStrategy }}
+      {{- if .Values.NodePortAddress  }}
+      nodePort:
+        address: {{ .Values.NodePortAddress }}
+      {{- end }}
+  - service: OAuthServer
+    servicePublishingStrategy:
+      type: {{ .Values.APIPublishingStrategy }}
+      {{- if .Values.NodePortAddress  }}
+      nodePort:
+        address: {{ .Values.NodePortAddress }}
+      {{- end }}
+  - service: OIDC
+    servicePublishingStrategy:
+      type: {{ .Values.APIPublishingStrategy }}
+      {{- if .Values.NodePortAddress  }}
+      nodePort:
+        address: {{ .Values.NodePortAddress }}
+      {{- end }}
+  - service: Konnectivity
+    servicePublishingStrategy:
+      type: {{ .Values.APIPublishingStrategy }}
+      {{- if .Values.NodePortAddress  }}
+      nodePort:
+        address: {{ .Values.NodePortAddress }}
+      {{- end }}
+  - service: Ignition
+    servicePublishingStrategy:
+      type: {{ .Values.APIPublishingStrategy }}
+      {{- if .Values.NodePortAddress  }}
+      nodePort:
+        address: {{ .Values.NodePortAddress }}
+      {{- end }}

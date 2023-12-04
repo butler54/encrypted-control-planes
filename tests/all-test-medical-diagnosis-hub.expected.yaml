@@ -1,0 +1,22 @@
+---
+# Source: test/templates/test-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: test
+  name: testcm
+  labels:
+    app.kubernetes.io/instance: test
+data:
+  "index.html": |-
+    <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Hello World</title>
+        </head>
+          <body>
+            <h1>Hello World!</h1>
+            <br/>
+          </body>
+      </html>

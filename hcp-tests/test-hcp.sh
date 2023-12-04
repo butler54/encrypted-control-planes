@@ -22,4 +22,5 @@ export AWS_CREDS_FILE=${HOME}/.aws/credentials
   --aws-creds ${AWS_CREDS_FILE} \
   --pull-secret '/users/chbutler/pull-secret' \
   --auto-repair \
-  --generate-ssh
+  --generate-ssh \
+  --render
