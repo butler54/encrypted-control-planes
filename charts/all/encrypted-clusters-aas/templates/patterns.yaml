@@ -18,7 +18,7 @@ spec:
       targetRevision: {{ $.Values.global.targetRevision }}
       helm:
         parameters:
-{{- if .Values.global.useExternalSecrets }}
+{{- if $.Values.global.useExternalSecrets }}
         - name: secret-store-name 
           value: {{ $.Values.secretStore.name }}
         - name: secret-store-kind
