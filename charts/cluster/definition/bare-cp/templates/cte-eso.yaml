@@ -1,0 +1,23 @@
+{{- if .Values.global.useExternalSecrets }}
+# this is a hack for now.
+---
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: eso-cte-reg-token
+  namespace: {{ .Release.Namespace }}-{{ .Release.Name }}
+    argocd.argoproj.io/sync-wave: '-10'
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: {{ .Values.secretStore.name }}
+    kind: {{ .Values.secretStore.kind }}
+  target:
+    name: cte-reg-token
+    template:
+      type: Opaque
+  dataFrom:
+  - extract:
+      key: {{ .Values.cteReg.key }}
+{{- end }}
+

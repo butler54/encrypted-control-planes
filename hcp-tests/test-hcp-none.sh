@@ -1,5 +1,5 @@
 export CLUSTER_NAME=kubevirt2
-export PULL_SECRET="${HOME}/.config/containers/auth.json"
+export PULL_SECRET="${HOME}/pull-secret"
 export MEM="6Gi"
 export CPU="2"
 export WORKER_COUNT="1"
