@@ -125,6 +125,11 @@ clusterGroup:
       project: cnv
       path: charts/all/cnv
 
+    caas:
+      name: Clusters as a service
+      namespace: cluster
+      project: cluster
+      path: charts/all/encrypted-clusters-aas
 
 
   imperative:
