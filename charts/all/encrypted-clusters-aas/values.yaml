@@ -3,6 +3,8 @@ namespace: cluster
 project: cluster
 global:
   useExternalSecrets: true
+  targetRevision: main
+  repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
 templates:
 - name: control-plane-only
   definition: 'cp-only'
