@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: '-'
+  name: 'default-cluster-definition-bare-cp'
 spec:
 ---
 # Source: devconf-template/templates/pullSecret.yaml
@@ -76,16 +76,16 @@ spec:
 apiVersion: hypershift.openshift.io/v1alpha1
 kind: HostedCluster
 metadata:
-  name: default-cluster-definition-bare-cp
+  name: 'default-cluster-definition-bare-cp'
 spec:
   dns:
-    baseDomain: default-cluster-definition-bare-cp.example.com
+    baseDomain: 'default-cluster-definition-bare-cp.example.com'
   etcd:
     managed:
       storage:
         persistentVolume:
           size: 8Gi
-          storageClassName: cte-sc-default-cluster-definition-bare-cp
+          storageClassName: 'cte-sc-default-cluster-definition-bare-cp'
         restoreSnapshotURL: null
         type: PersistentVolume
     managementType: Managed
@@ -109,7 +109,7 @@ spec:
   #       name: default-cluster-definition-bare-cp-etcd-key
   sshKey:
     name: cluster-ssh-key
-  infraID: default-cluster-definition-bare-cp
+  infraID: 'default-cluster-definition-bare-cp'
   controllerAvailabilityPolicy: 
   
   services:
