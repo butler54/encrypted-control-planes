@@ -1,7 +1,8 @@
 
 namespace: cluster
 project: cluster
-
+global:
+  useExternalSecrets: true
 templates:
 - name: control-plane-only
   definition: 'cp-only'
