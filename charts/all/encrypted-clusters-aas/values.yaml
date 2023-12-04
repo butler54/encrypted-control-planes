@@ -19,7 +19,7 @@ templates:
   bootstrap: false
 
 sshkey:
-  key: values/data/global/clusterssh
+  key: secret/data/global/clusterssh
 
 APIPublishingStrategy: NodePort
 baseDomain: sandbox949.opentlc.com
