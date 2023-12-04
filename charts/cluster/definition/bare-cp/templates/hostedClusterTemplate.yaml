@@ -1,16 +1,16 @@
 apiVersion: hypershift.openshift.io/v1alpha1
 kind: HostedCluster
 metadata:
-  name: {{ .Release.Namespace }}-{{ .Release.Name }}
+  name: '{{ .Release.Namespace }}-{{ .Release.Name }}'
 spec:
   dns:
-    baseDomain: {{ .Release.Namespace }}-{{ .Release.Name }}.{{ .Values.baseDomain }}
+    baseDomain: '{{ .Release.Namespace }}-{{ .Release.Name }}.{{ .Values.baseDomain }}'
   etcd:
     managed:
       storage:
         persistentVolume:
           size: 8Gi
-          storageClassName: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
+          storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
         restoreSnapshotURL: null
         type: PersistentVolume
     managementType: Managed
@@ -34,7 +34,7 @@ spec:
   #       name: {{ .Release.Namespace }}-{{ .Release.Name }}-etcd-key
   sshKey:
     name: cluster-ssh-key
-  infraID: {{ .Release.Namespace }}-{{ .Release.Name }}
+  infraID: '{{ .Release.Namespace }}-{{ .Release.Name }}'
   controllerAvailabilityPolicy: {{ .Values.cpPolicy }}
   
   services:

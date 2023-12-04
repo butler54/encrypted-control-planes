@@ -6,7 +6,6 @@ kind: ExternalSecret
 metadata:
   name: eso-cte-reg-token
   namespace: {{ .Release.Namespace }}-{{ .Release.Name }}
-    argocd.argoproj.io/sync-wave: '-10'
 spec:
   refreshInterval: 15s
   secretStoreRef:
