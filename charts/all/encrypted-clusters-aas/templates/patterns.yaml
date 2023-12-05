@@ -3,66 +3,83 @@ apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplate
 metadata:
   name: hypershift-{{ .name }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "30"
+  namespace: 
 spec:
-  argocdNamespace: openshift-gitops
-  clusterDefinition:
-    destination:
-      namespace: {{ $.Values.namespace }}
-      server: 'https://kubernetes.default.svc'
-    project: {{ $.Values.namespace }}
-    source:
-      path: charts/cluster/definition/{{ .defintion }}
-      repoURL: {{ $.Values.global.repoURL }}
-      targetRevision: {{ $.Values.global.targetRevision }}
-      helm:
-        parameters:
-{{- if $.Values.global.useExternalSecrets }}
-        - name: secret-store-name 
-          value: {{ $.Values.secretStore.name }}
-        - name: secret-store-kind
-          value: {{ $.Values.secretStore.kind }}
-{{- end }}
-        - name: cpPolicy
-          value: {{ .cpPolicy }}
-
-        - name: nodepoolReplicas
-          value: {{ .nodes }} 
-
-        - name: APIPublishingStrategy
-          value: {{ $.Values.APIPublishingStrategy }}
-        - name: baseDomain # Fixme should be different
-
-          value: {{ $.Values.baseDomain }}
-        - name: NodePortAddress
-          value: {{ $.Values.NodePortAddress }}
-    syncPolicy:
-      automated: {}
-  {{- if .bootstrap }}
+  clusterDefinition: cluster-definition-{{ .name }}
+{{- if .bootstrap }}
   clusterSetup:
-  - name: {{ .name }} Pattern Installation
+    - cluster-setup-definition--{{ .name }}
+{{- end }}
+  cost: 1
+
+
+    
+  cost: 2
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-definition-{{ .name }}
+  namespace: openshift-gitops
+spec:
+  generators:
+  - {}
+  template:
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
         server: 'https://kubernetes.default.svc'
-      project: default
+      project: {{ $.Values.namespace }}
+      source:
+        path: charts/cluster/definition/{{ .defintion }}
+        repoURL: {{ $.Values.global.repoURL }}
+        targetRevision: {{ $.Values.global.targetRevision }}
+        helm:
+          parameters:
+  {{- if $.Values.global.useExternalSecrets }}
+          - name: secret-store-name 
+            value: {{ $.Values.secretStore.name }}
+          - name: secret-store-kind
+            value: {{ $.Values.secretStore.kind }}
+  {{- end }}
+          - name: cpPolicy
+            value: {{ .cpPolicy }}
+
+          - name: nodepoolReplicas
+            value: {{ .nodes }} 
+
+          - name: APIPublishingStrategy
+            value: {{ $.Values.APIPublishingStrategy }}
+          - name: baseDomain # Fixme should be different
+
+            value: {{ $.Values.baseDomain }}
+          - name: NodePortAddress
+            value: {{ $.Values.NodePortAddress }}
+      syncPolicy:
+        automated: {}
+
+---
+{{- if .bootstrap }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-setup-definition--{{ .name }}
+  namespace: openshift-gitops
+spec:
+  generators:
+  - {}
+  template:
+    spec:
+      destination:
+        namespace: {{ $.Values.namespace }}
+        server: '{{ url }}'
+      project: {{ $.Values.namespace }}
       source:
         path: common/install
         repoURL: {{ $.Values.global.repoURL }}
         targetRevision: main
-        # no helm params required for simple service
-        # helm:
-        #   parameters:
-        #   - name: main.git.repoURL
-        #     value: $ARGOCD_APP_SOURCE_REPO_URL
-        #   - name: main.git.revision
-        #     value: $ARGOCD_APP_SOURCE_TARGET_REVISION
-        #   - name: main.git.clusterGroupName
-        #     value: hub
       syncPolicy:
         automated: {}
-    {{- end }}
-  cost: 2
+{{- end }}
 ---
 {{- end }}
