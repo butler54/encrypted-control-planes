@@ -1,11 +1,13 @@
+#!/bin/zsh
 export GUID='fdjpc'
 export OCP_BASE_DOMAIN=sandbox949.opentlc.com
 export OCP_PULL_SECRET=${HOME}/pullsecret
 export AWS_CREDS_FILE=${HOME}/.aws/credentials
+export NAME=$1
 
   hypershift create cluster aws \
-  --name production \
-  --infra-id prod-${GUID} \
+  --name ${NAME} \
+  --infra-id ${NAME}-${GUID} \
   --region ap-southeast-1 \
   --zones ap-southeast-1b \
   --instance-type m6a.large \
@@ -22,5 +24,4 @@ export AWS_CREDS_FILE=${HOME}/.aws/credentials
   --aws-creds ${AWS_CREDS_FILE} \
   --pull-secret '/users/chbutler/pull-secret' \
   --auto-repair \
-  --generate-ssh \
-  --render
+  --generate-ssh

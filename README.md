@@ -1,6 +1,15 @@
 # Encrypted control planes
 
-Deploying hosted control planes together with CipherTrust Transparent Encryption to encrypt etcd.
+Red Hat OpenShift has released a feature called [Hosted Control Planes](https://docs.openshift.com/container-platform/4.14/hosted_control_planes/index.html) which decouples control planes from worker nodes. This architecture allows organisations to more efficiently run a large number of OpenShift clusters and makes smaller clusters more cost effective (due to the decreased infrastructure footprint of a 'hosted' clusters control plane). 
+
+The consolidation does allow platform teams to more easily manage the infrastructure, however, does consolidate multiple control plane's worth of data into a single cluster.
+
+This repository is a demonstration of how fine grained access control and encryption can be maintained over the control plane data within each of the hosted clusters. 
+
+[Thales CipherTrust Transparent Encryption for Kubernetes](https://thalesdocs.com/ctp/cte-con/cte-k8s/latest/index.html) together with [CipherTrust Manager](https://cpl.thalesgroup.com/encryption/ciphertrust-manager) are being used to encrypt the etcd datastore for each hosted cluster - to maintain the security of Kubernetes secrets.
+
+## Current status
+This project is currently a work in progress.
 
 ## What is all this code?
 
