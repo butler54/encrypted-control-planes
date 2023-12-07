@@ -1,4 +1,5 @@
 # Bad stuff could happen if this is not correct.
+{{- if .Values.global.nestedVirt }}
 apiVersion: operator.openshift.io/v1
 kind: IngressController
 metadata:
@@ -24,3 +25,4 @@ spec:
       operator: DoesNotExist
   tuningOptions:
     reloadInterval: 0s
+{{- end}}

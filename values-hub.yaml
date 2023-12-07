@@ -30,7 +30,8 @@ clusterGroup:
       namespace: openshift-operators
       channel: stable
       source: certified-operators
-
+    # Note CNV operator is not required all the time, however, it does not carry much weight until
+    # HyperConverged object is deployed.
     cnv:
       name: kubevirt-hyperconverged
       namespace: openshift-cnv
