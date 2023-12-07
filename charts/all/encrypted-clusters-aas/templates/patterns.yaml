@@ -44,15 +44,12 @@ spec:
   {{- end }}
           - name: cpPolicy
             value: {{ .cpPolicy }}
-
           - name: nodepoolReplicas
-
-            value: {{ toString .nodes }}
+            value: "{{ toString .nodes }}"
 
           - name: APIPublishingStrategy
             value: {{ $.Values.APIPublishingStrategy }}
           - name: baseDomain # Fixme should be different
-
             value: {{ $.Values.baseDomain }}
           - name: NodePortAddress
             value: {{ $.Values.NodePortAddress }}
