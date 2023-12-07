@@ -25,6 +25,7 @@ spec:
   generators:
   - {}
   template:
+    metadata:
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
@@ -67,6 +68,7 @@ spec:
   generators:
   - {}
   template:
+    metadata:
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
