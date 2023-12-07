@@ -1,4 +1,5 @@
-export CLUSTER_NAME=kubevirt2
+#!/bin/zsh
+export NAME=$1
 export PULL_SECRET="${HOME}/pull-secret"
 export MEM="6Gi"
 export CPU="2"
@@ -14,5 +15,4 @@ hypershift create cluster none \
 --control-plane-availability-policy HighlyAvailable \
 --base-domain ${OCP_BASE_DOMAIN} \
 --generate-ssh \
---namespace local-cluster \
---render
+--namespace local-cluster
