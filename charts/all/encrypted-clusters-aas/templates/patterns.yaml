@@ -8,7 +8,7 @@ spec:
   clusterDefinition: cluster-definition-{{ .name }}
 {{- if .bootstrap }}
   clusterSetup:
-    - cluster-setup-definition--{{ .name }}
+    - cluster-setup-definition-{{ .name }}
 {{- end }}
   cost: 1
 
@@ -63,7 +63,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-setup-definition--{{ .name }}
+  name: cluster-setup-definition-{{ .name }}
   namespace: openshift-gitops
 spec:
   generators:
@@ -72,7 +72,7 @@ spec:
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
-        server: '{{ url }}'
+        server: 'https://kubernetes.default.svc'
       project: {{ $.Values.namespace }}
       source:
         path: common/install
