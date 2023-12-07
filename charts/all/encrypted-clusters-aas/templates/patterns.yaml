@@ -46,7 +46,8 @@ spec:
             value: {{ .cpPolicy }}
 
           - name: nodepoolReplicas
-            value: {{ .nodes }} 
+
+            value: {{ toString .nodes }}
 
           - name: APIPublishingStrategy
             value: {{ $.Values.APIPublishingStrategy }}
