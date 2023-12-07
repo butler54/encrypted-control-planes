@@ -5,6 +5,9 @@
 # PLEASE read https://github.com/hybrid-cloud-patterns/common/tree/main/letsencrypt#readme
 # for all the limitations around it
 
+global:
+  nestedVirt: false
+  awsMachinePool: false
 
 # letsencrypt:
 #   enabled: true
