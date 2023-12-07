@@ -7,13 +7,13 @@ global:
   repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
 templates:
 - name: control-plane-only
-  definition: 'cp-only'
+  definition: 'bare-cp'
   cpPolicy: SingleReplica
   nodes: 0
   bootstrap: false
 
 - name: control-plane-only-ha
-  definition: 'cp-only-ha'
+  definition: 'bare-cp'
   cpPolicy: HighlyAvailable
   nodes: 0
   bootstrap: false
