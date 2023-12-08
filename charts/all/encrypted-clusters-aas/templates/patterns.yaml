@@ -11,9 +11,6 @@ spec:
 {{- end }}
   cost: 1
 
-
-    
-  cost: 2
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -24,8 +21,7 @@ spec:
   generators:
   - {}
   template:
-    metadata:
-      name: cluster-definition-{{ .name }} # not sure if this should be using a var or not
+    metadata: {}
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
@@ -68,8 +64,7 @@ spec:
   generators:
   - {}
   template:
-    metadata:
-      name: cluster-setup-definition-{{ .name }}
+    metadata: {}
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
