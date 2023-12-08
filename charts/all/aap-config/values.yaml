@@ -1,0 +1,8 @@
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+
+test:
+  key: secret/data/global/test
