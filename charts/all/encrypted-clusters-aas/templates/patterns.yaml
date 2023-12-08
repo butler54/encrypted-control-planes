@@ -3,7 +3,7 @@ apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplate
 metadata:
   name: hypershift-{{ .name }}
-  namespace: 
+  namespace: cluster
 spec:
   clusterDefinition: cluster-definition-{{ .name }}
 {{- if .bootstrap }}
@@ -20,7 +20,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-definition-{{ .name }}
-  namespace: openshift-gitops
+  namespace: cluster
 spec:
   generators:
   - {}
@@ -64,7 +64,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-setup-definition-{{ .name }}
-  namespace: openshift-gitops
+  namespace: cluster
 spec:
   generators:
   - {}
