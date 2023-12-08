@@ -20,7 +20,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-definition-{{ .name }}
-  namespace: cluster
+  namespace: cluster-aas-operator # in the operator namespace where the operator can orchestrate it
 spec:
   generators:
   - {}
@@ -64,7 +64,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-setup-definition-{{ .name }}
-  namespace: cluster
+  namespace: cluster-aas-operator
 spec:
   generators:
   - {}
