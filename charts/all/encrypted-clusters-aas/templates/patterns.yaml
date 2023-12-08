@@ -3,12 +3,11 @@ apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplate
 metadata:
   name: hypershift-{{ .name }}
-  namespace: cluster
 spec:
-  clusterDefinition: cluster-definition-{{ .name }}
+  clusterDefinition: cluster-definition-app-{{ .name }}
 {{- if .bootstrap }}
   clusterSetup:
-    - cluster-setup-definition-{{ .name }}
+    - cluster-setup-definition-app-{{ .name }}
 {{- end }}
   cost: 1
 
@@ -19,7 +18,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-definition-{{ .name }}
+  name: cluster-definition-app-{{ .name }}
   namespace: cluster-aas-operator # in the operator namespace where the operator can orchestrate it
 spec:
   generators:
@@ -63,7 +62,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-setup-definition-{{ .name }}
+  name: cluster-setup-definition-app-{{ .name }}
   namespace: cluster-aas-operator
 spec:
   generators:
