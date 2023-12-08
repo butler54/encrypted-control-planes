@@ -6,3 +6,6 @@ secretStore:
 
 test:
   key: secret/data/global/test
+
+ansibleToken:
+  key: secret/data/global/aap-token

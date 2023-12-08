@@ -2,7 +2,7 @@
 apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
-  name: test-eso
+  name: ansible-token-eso
   namespace: ansible-automation-platform
 spec:
   refreshInterval: 15s
@@ -10,7 +10,7 @@ spec:
     name: {{ .Values.secretStore.name }}
     kind: {{ .Values.secretStore.kind }}
   target:
-    name: test
+    name: ansible-token
   dataFrom:
   - extract:
-      key: {{ .Values.test.key }}
+      key: {{ .Values.ansibleToken.key }}

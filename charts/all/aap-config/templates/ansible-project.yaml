@@ -1,0 +1,15 @@
+---
+apiVersion: "tower.ansible.com/v1alpha1"
+kind: AnsibleProject
+metadata:
+  name: ansible-project
+  namespace: ansible-automation-platform
+spec:
+  branch: main
+  connection_secret: ansible-token
+  description: "Test credential"
+  ssh_secret: test
+  name: test
+  organization: Default
+  repo: {{ .Values.global.repoURL }}
+  scm_type: git
