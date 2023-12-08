@@ -12,7 +12,7 @@ spec:
   target:
     name: ansible-token
     template:
-      mergePolicy: Override
+      mergePolicy: Merge
       type: Opaque
       data:
         host: https://controller-ansible-automation-platform.{{ .Values.global.hubClusterDomain }}
