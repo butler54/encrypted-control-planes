@@ -28,7 +28,7 @@ spec:
         server: 'https://kubernetes.default.svc'
       project: default
       source:
-        path: charts/cluster/definition/{{ .defintion }}
+        path: charts/cluster/definition/{{ .definition }}
         repoURL: {{ $.Values.global.repoURL }}
         targetRevision: {{ $.Values.global.targetRevision }}
         helm:
