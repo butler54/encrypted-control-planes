@@ -13,6 +13,7 @@ clusterGroup:
   - cte
   - cluster
   - ansible-automation-platform
+
   subscriptions:
     acm:
       name: advanced-cluster-management
@@ -46,6 +47,10 @@ clusterGroup:
     aap-operator:
       name: ansible-automation-platform-operator
       namespace: ansible-automation-platform
+    openshift-logging:
+      name: cluster-logging
+      namespace: openshift-logging
+      channel: stable
 
   projects:
   - local-cluster
