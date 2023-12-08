@@ -26,6 +26,7 @@ spec:
   - {}
   template:
     metadata:
+      name: cluster-definition-{{ .name }} # not sure if this should be using a var or not
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
@@ -69,6 +70,7 @@ spec:
   - {}
   template:
     metadata:
+      name: cluster-setup-definition-{{ .name }}
     spec:
       destination:
         namespace: {{ $.Values.namespace }}
