@@ -145,6 +145,12 @@ clusterGroup:
       project: local-cluster
       path: charts/all/aap-config
 
+    logging:
+      name: logging
+      namespace: openshift-operators
+      project: default
+      path: charts/all/logging
+
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
