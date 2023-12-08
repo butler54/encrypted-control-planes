@@ -11,12 +11,12 @@ spec:
     kind: {{ .Values.secretStore.kind }}
   target:
     name: ansible-token
-      template:
-        mergePolicy: Override
-        type: Opaque
-        data:
-          host: https://controller-ansible-automation-platform.{{ .Values.global.hubClusterDomain }}
-          token: ''
+    template:
+      mergePolicy: Override
+      type: Opaque
+      data:
+        host: https://controller-ansible-automation-platform.{{ .Values.global.hubClusterDomain }}
+        token: ''
   dataFrom:
   - extract:
       key: {{ .Values.ansibleToken.key }}
