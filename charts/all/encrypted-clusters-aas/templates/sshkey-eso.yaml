@@ -5,7 +5,7 @@ apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
   name: eso-ssh-key
-  namespace: clusters #FIXME pass across
+  namespace: cluster #FIXME pass across
   annotations:
     argocd.argoproj.io/sync-wave: '-10'
 spec:
