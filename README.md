@@ -15,6 +15,16 @@ This project is currently a work in progress.
 
 This repository is based on the [multicloud-gitops validated pattern](https://github.com/validatedpatterns/multicloud-gitops).
 
+Today this pattern has CipherTrust Manager deployed outside of the pattern and connected up after the fact.
+
+
+## Network connectivity requirements
+The ciphertrust manager is currently being configured via ansible (e.g. ssh login) and 
+
+
+
+
+
 ## Cluster bootstrapping
 
 ### Required secrets

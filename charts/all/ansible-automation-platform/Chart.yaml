@@ -1,5 +1,5 @@
 apiVersion: v2
-description: A Helm chart to configure ansible-automation-platform
+description: A Helm chart to do basic setup of ansible automation platform
 keywords:
 - pattern
 name: ansible-automation-platform
