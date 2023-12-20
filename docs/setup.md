@@ -50,4 +50,3 @@ The following secrets SHOULD be pre-poplulated before deploying the validated-pa
   - If using `podman` the file is here:  `~/.config/containers/auth.json`
 
 
-## 
