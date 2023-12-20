@@ -10,3 +10,4 @@ common/pattern-vault.init
 .DS_Store
 # Drawio backup files
 *.bkp
+*.dtmp
