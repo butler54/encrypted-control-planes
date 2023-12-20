@@ -162,9 +162,8 @@ clusterGroup:
     # imagePullPolicy is set to always: imperative.imagePullPolicy
     # For additional overrides that apply to the jobs, please refer to
     # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
-    jobs: 
-     - name: aap-setup
-      # ansible playbook to be run
+    jobs:
+    - name: aap-setup
       playbook: ansible/aap-setup.yaml
       # per playbook timeout in seconds
       timeout: 234
