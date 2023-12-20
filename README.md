@@ -19,7 +19,38 @@ Today this pattern has CipherTrust Manager deployed outside of the pattern and c
 
 
 ## Network connectivity requirements
-The ciphertrust manager is currently being configured via ansible (e.g. ssh login) and 
+The ciphertrust manager is currently being configured via ansible (via the api). So 443 is required from the cluster to the ciphertrust manager.
+
+
+## Ansible approach
+Interactions with the CipherTrust Manager are run by ansible. For this ansible jobs need to be triggered per cluster created.
+Ansible Automation Platform defines a number of custom resource definitions:
+```bash
+oc get crd -o name | grep ansible
+customresourcedefinition.apiextensions.k8s.io/ansiblecredentials.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansibleinstancegroups.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansibleinventories.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansiblejobs.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansibleprojects.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansibleschedules.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/ansibleworkflows.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationcontrollerbackups.automationcontroller.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationcontrollerrestores.automationcontroller.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationcontrollers.automationcontroller.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationhubbackups.automationhub.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationhubrestores.automationhub.ansible.com
+customresourcedefinition.apiextensions.k8s.io/automationhubs.automationhub.ansible.com
+customresourcedefinition.apiextensions.k8s.io/edabackups.eda.ansible.com
+customresourcedefinition.apiextensions.k8s.io/edarestores.eda.ansible.com
+customresourcedefinition.apiextensions.k8s.io/edas.eda.ansible.com
+customresourcedefinition.apiextensions.k8s.io/jobtemplates.tower.ansible.com
+customresourcedefinition.apiextensions.k8s.io/workflowtemplates.tower.ansible.com                                    
+```
+
+In par
+
+
+
 
 
 

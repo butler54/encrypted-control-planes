@@ -1,3 +1,4 @@
+
 clusterGroup:
   name: hub
   isHubCluster: true
@@ -44,6 +45,8 @@ clusterGroup:
       channel: alpha
       source: community-operators
 
+    # This deploys the ansible automation platform operator - not the controller
+    # you may want to remove this if you are using an external cluster.
     aap-operator:
       name: ansible-automation-platform-operator
       namespace: ansible-automation-platform
@@ -71,6 +74,7 @@ clusterGroup:
 
 
   applications:
+
     aap:
       name: ansible-automation-platform
       project: local-cluster

@@ -6,6 +6,8 @@ global:
     syncPolicy: Automatic
     installPlanApproval: Automatic
 
+  aapURL: ''
+
 main:
   clusterGroupName: hub
 

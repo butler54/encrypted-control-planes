@@ -1,7 +1,6 @@
 apiVersion: v2
-description: A Helm chart to do basic setup of ansible automation platform
+description: Completes basic deployment of AAP onto the cluster if
 keywords:
 - pattern
 name: ansible-automation-platform
 version: 0.0.1
-dependencies:

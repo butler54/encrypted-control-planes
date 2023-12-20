@@ -1,3 +1,2 @@
----
 global:
-  hubClusterDomain: example.com
+  aapURL: ''
