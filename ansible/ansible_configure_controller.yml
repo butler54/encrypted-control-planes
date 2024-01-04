@@ -246,41 +246,41 @@
     #     controller_validate_certs: false
     #     controller_configuration_async_retries: 20
     #     controller_notifications: []
-    - name: Configure Projects
-      ansible.builtin.include_role:
-        name: redhat_cop.controller_configuration.projects
-      vars:
-        controller_hostname: https://{{ ansible_host }}
-        controller_username: admin
-        controller_password: "{{ admin_password }}"
-        controller_validate_certs: false
-        controller_configuration_async_retries: 60
-        controller_projects:
-          - name: Demo Project
-            state: absent
+    # - name: Configure Projects
+    #   ansible.builtin.include_role:
+    #     name: redhat_cop.controller_configuration.projects
+    #   vars:
+    #     controller_hostname: https://{{ ansible_host }}
+    #     controller_username: admin
+    #     controller_password: "{{ admin_password }}"
+    #     controller_validate_certs: false
+    #     controller_configuration_async_retries: 60
+    #     controller_projects:
+    #       - name: Demo Project
+    #         state: absent
 
-          - name: CTE Github
-            organization: "{{ aap_org_name }}"
-            scm_branch: "{{ project_branch }}"
-            scm_clean: "no"
-            scm_delete_on_update: "no"
-            scm_type: git
-            scm_update_on_launch: "yes"
-            scm_url: "{{ project_repo }}"
+    #       - name: CTE Github
+    #         organization: "{{ aap_org_name }}"
+    #         scm_branch: "{{ project_branch }}"
+    #         scm_clean: "no"
+    #         scm_delete_on_update: "no"
+    #         scm_type: git
+    #         scm_update_on_launch: "yes"
+    #         scm_url: "{{ project_repo }}"
 
-    - name: Configure Execution Environments
-      ansible.builtin.include_role:
-        name: redhat_cop.controller_configuration.execution_environments
-      vars:
-        controller_hostname: https://{{ ansible_host }}
-        controller_username: admin
-        controller_password: "{{ admin_password }}"
-        controller_validate_certs: false
-        controller_configuration_async_retries: 20
-        controller_execution_environments:
-          - name: "{{ aap_execution_environment }}"
-            image: "{{ aap_execution_environment_image }}"
-            pull: always
+    # - name: Configure Execution Environments
+    #   ansible.builtin.include_role:
+    #     name: redhat_cop.controller_configuration.execution_environments
+    #   vars:
+    #     controller_hostname: https://{{ ansible_host }}
+    #     controller_username: admin
+    #     controller_password: "{{ admin_password }}"
+    #     controller_validate_certs: false
+    #     controller_configuration_async_retries: 20
+    #     controller_execution_environments:
+    #       - name: "{{ aap_execution_environment }}"
+    #         image: "{{ aap_execution_environment_image }}"
+    #         pull: always
 
     # - name: Configure Applications
     #   ansible.builtin.include_role:
@@ -292,18 +292,18 @@
     #     controller_validate_certs: false
     #     controller_configuration_async_retries: 20
     #     controller_applications: []
-    - name: Configure Inventories
-      ansible.builtin.include_role:
-        name: redhat_cop.controller_configuration.inventories
-      vars:
-        controller_hostname: https://{{ ansible_host }}
-        controller_username: admin
-        controller_password: "{{ admin_password }}"
-        controller_validate_certs: false
-        controller_configuration_async_retries: 20
-        controller_inventories:
-          - name: CTE-inventory
-            organization: "{{ aap_org_name }}"
+    # - name: Configure Inventories
+    #   ansible.builtin.include_role:
+    #     name: redhat_cop.controller_configuration.inventories
+    #   vars:
+    #     controller_hostname: https://{{ ansible_host }}
+    #     controller_username: admin
+    #     controller_password: "{{ admin_password }}"
+    #     controller_validate_certs: false
+    #     controller_configuration_async_retries: 20
+    #     controller_inventories:
+    #       - name: CTE-inventory
+    #         organization: "{{ aap_org_name }}"
 
     # - name: Configure Instance Groups
     #   ansible.builtin.include_role:
