@@ -1,3 +1,10 @@
 global:
   # if defined it's assumed to me an external ansible cluster
   aapURL: ''
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+aapManifest:
+  key: 'secret/data/global/aap-manifest'
