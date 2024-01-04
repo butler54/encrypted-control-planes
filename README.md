@@ -18,49 +18,17 @@ This repository is based on the [multicloud-gitops validated pattern](https://gi
 Today this pattern has CipherTrust Manager deployed outside of the pattern and connected up after the fact.
 
 
-## Network connectivity requirements
-The ciphertrust manager is currently being configured via ansible (via the api). So 443 is required from the cluster to the ciphertrust manager.
+## Setup and pre-requisites
+This setup assumes that you have both a openshift cluster and a ciphertrust manager pre-deployed and that the worker nodes of you cluster can reach the ciphertrust manager over `443`. More detailed information is in [docs](./docs).
 
-
-## Ansible approach
-Interactions with the CipherTrust Manager are run by ansible. For this ansible jobs need to be triggered per cluster created.
-Ansible Automation Platform defines a number of custom resource definitions:
-```bash
-oc get crd -o name | grep ansible
-customresourcedefinition.apiextensions.k8s.io/ansiblecredentials.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansibleinstancegroups.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansibleinventories.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansiblejobs.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansibleprojects.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansibleschedules.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/ansibleworkflows.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationcontrollerbackups.automationcontroller.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationcontrollerrestores.automationcontroller.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationcontrollers.automationcontroller.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationhubbackups.automationhub.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationhubrestores.automationhub.ansible.com
-customresourcedefinition.apiextensions.k8s.io/automationhubs.automationhub.ansible.com
-customresourcedefinition.apiextensions.k8s.io/edabackups.eda.ansible.com
-customresourcedefinition.apiextensions.k8s.io/edarestores.eda.ansible.com
-customresourcedefinition.apiextensions.k8s.io/edas.eda.ansible.com
-customresourcedefinition.apiextensions.k8s.io/jobtemplates.tower.ansible.com
-customresourcedefinition.apiextensions.k8s.io/workflowtemplates.tower.ansible.com                                    
-```
-
-In par
-
-
-
-
-
-
-
-
-## Cluster bootstrapping
 
 ### Required secrets
 
-1. AWS API KEY / SECRET KEY
-2. Cred file equivalent of above
-3. htpassword file
+1. AWS API KEY / SECRET KEY for s3 storage.
+2. Cred file equivalent of above at ~/.aws/credentials
+3. htpassword file (for local users in lieu of reconfiguring)
 4. A pull secret for docker.io for the CTE containers.
+5. A manifest file for AAP
+6. A user / password for ciphertrust manager
+7. A registration token for ciphetrust manager (hopefully automatible).
+
