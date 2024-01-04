@@ -1,0 +1,43 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Configure a token and store it.
+  become: false
+  connection: local
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_host: ""
+    admin_password: ""
+    aap_org_name: CTE
+    aap_execution_environment: 
+    aap_execution_environment_image: quay.io/hybridcloudpatterns/ansible-edge-gitops-ee # Do not change for now.
+    kiosk_demo_inventory: CTE-inventory
+    project_repo: https://github.com/butler54/encrypted-control-planes.git
+    project_branch: main
+    kubeconfig: "{{ lookup('env', 'KUBECONFIG') }}"
+  tasks:
+  
+    - name: create a token
+      awx.awx.token:
+        controller_host: "{{ ansible_host }}"
+        controller_username: admin
+        controller_password: "{{ admin_password }}"
+        validate_certs: false
+        description: "cte-k8s-token"
+        state: present 
+      register: controller_token
+
+    - name: store the token as a Kubernetes secret
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          api_version: v1
+          kind: Secret
+          metadata:
+            namespace: ansible-automation-platform
+            name: controller-login-token
+          data:
+            token: "{{ controller_token.ansible_facts.controller_token.token }}"
+
+      
+    # Okay
