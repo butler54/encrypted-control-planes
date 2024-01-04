@@ -1,0 +1,15 @@
+# Entrypoint for validated patterns imperative job
+# Based on https://github.com/validatedpatterns/ansible-edge-gitops
+# Customized and scope reduced
+# Specifically the scope has been reduced such that an inventory just with localhost is setup
+- name: Discover Ansible Controller Credentials
+  ansible.builtin.import_playbook: ansible_get_credentials.yml
+
+- name: Set parameters needed for configuring controller from values.yaml
+  ansible.builtin.import_playbook: get_controller_values_overrides.yml
+
+- name: Extract secrets from Kubernetes
+  ansible.builtin.import_playbook: parse_secrets_from_k8s.yml
+
+- name: Configure controller using credentials
+  ansible.builtin.import_playbook: ansible_configure_controller.yml

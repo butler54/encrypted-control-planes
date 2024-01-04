@@ -1,0 +1,22 @@
+---
+- name: Copy controller overrides out of values.yml
+  hosts: localhost
+  gather_facts: false
+  become: false
+  vars:
+    kubeconfig: "{{ lookup('env', 'KUBECONFIG') }}"
+  tasks:
+    - name: Retrieve configmap values
+      kubernetes.core.k8s_info:
+        kind: ConfigMap
+        namespace: ansible-automation-platform
+        name: aap-configmap
+      register: aap_cm
+      until: aap_cm.resources | length == 1
+      retries: 20
+      delay: 5
+
+    - name: Store needed values
+      ansible.builtin.set_fact:
+        project_repo: "{{ aap_cm.resources[0].data.project_repo }}"
+        project_branch: "{{ aap_cm.resources[0].data.project_branch }}"

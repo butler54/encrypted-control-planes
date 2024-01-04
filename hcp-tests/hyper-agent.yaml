@@ -1,0 +1,7 @@
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplateInstance
+metadata:
+  name: hyper-agent
+  namespace: cluster
+spec:
+  clusterTemplateRef: hypershift-agent-cluster

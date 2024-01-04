@@ -14,6 +14,7 @@ clusterGroup:
   - cte
   - cluster
   - ansible-automation-platform
+  - openshift-logging
 
   subscriptions:
     acm:
@@ -131,11 +132,11 @@ clusterGroup:
       project: cte
       path: charts/all/cte-scc
 
-    cnv:
-      name: cnv
-      namespace: openshift-cnv
-      project: cnv
-      path: charts/all/cnv
+    # cnv:
+    #   name: cnv
+    #   namespace: openshift-cnv
+    #   project: cnv
+    #   path: charts/all/cnv
 
     caas:
       name: encrypted-clusters-aas
@@ -163,9 +164,11 @@ clusterGroup:
     # For additional overrides that apply to the jobs, please refer to
     # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
     jobs:
-    - name: aap-setup
-      playbook: ansible/aap-setup.yaml
-      # per playbook timeout in seconds
-      timeout: 234
-      # verbosity: "-v"
+
+    - name: configure-aap-controller
+      playbook: ansible/imperative_configure_controller.yml
+      # this image has not been changes. TBD would make sense 
+      image: quay.io/hybridcloudpatterns/ansible-edge-gitops-ee:latest
+      verbosity: -vvv
+      timeout: "900"
   managedClusterGroups: []
