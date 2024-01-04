@@ -13,3 +13,6 @@
 
 - name: Configure controller using credentials
   ansible.builtin.import_playbook: ansible_configure_controller.yml
+
+- name: Set ansible token for downstream use
+  ansible.builtin.import_playbook: set_ansible_token.yml
