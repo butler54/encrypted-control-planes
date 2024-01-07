@@ -37,7 +37,7 @@
             namespace: imperative # Constrained by the service account that is running this job
             name: controller-login-token
           data:
-            token: {{ controller_token.ansible_facts.controller_token.token | ansible.builtin.b64encode }}
+            token: "{{ controller_token.ansible_facts.controller_token.token | ansible.builtin.b64encode }}"
 
       
     # Okay
