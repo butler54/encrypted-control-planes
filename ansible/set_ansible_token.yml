@@ -31,13 +31,13 @@
       kubernetes.core.k8s:
         state: present
         definition:
-          api_version: v1
+          apiVersion: v1
           kind: Secret
           metadata:
             namespace: imperative # Constrained by the service account that is running this job
             name: controller-login-token
           data:
-            token: "{{ controller_token.ansible_facts.controller_token.token }}"
+            token: {{ controller_token.ansible_facts.controller_token.token | ansible.builtin.b64encode }}
 
       
     # Okay
