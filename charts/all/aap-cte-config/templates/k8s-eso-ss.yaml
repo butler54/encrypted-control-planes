@@ -3,7 +3,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
 metadata:
   name: cte-imperative-ss
-  namespace: imperative
+  namespace: cte
 spec:
   provider:
     kubernetes:
@@ -17,4 +17,4 @@ spec:
         serviceAccount: 
           name: eso-sa
           namespace: cte
-     # namespace: imperative
+      remoteNamespace: imperative
