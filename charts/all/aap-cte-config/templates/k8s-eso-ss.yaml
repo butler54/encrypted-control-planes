@@ -10,5 +10,5 @@ spec:
       server:
         url: https://kubernetes.default.svc
       auth:
-        serviceAccount: eso-sa
+        serviceAccount: "eso-sa"
       namespace: imperative
