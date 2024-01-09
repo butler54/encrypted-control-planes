@@ -81,10 +81,10 @@ clusterGroup:
       project: local-cluster
       path: charts/all/ansible-automation-platform
 
-    # aap-config:
-    #   name: aap-config
-    #   project: hub
-    #   path: charts/all/aap-config
+    aap-cte-config:
+      name: aap-cte-config
+      project: hub
+      path: charts/all/aap-cte-config
 
     acm:
       name: acm

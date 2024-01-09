@@ -1,0 +1,6 @@
+apiVersion: v2
+description: A Helm chart to configure aap to support the cte appliance
+keywords:
+- pattern
+name: aap-cte-config
+version: 0.0.1
