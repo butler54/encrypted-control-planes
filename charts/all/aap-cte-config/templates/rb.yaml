@@ -8,6 +8,6 @@ subjects:
   name: eso-sa
   namespace: cte
 roleRef:
-  kind: ClusterRole
+  kind: Role
   name: secret-reader-imperative-ns
   apiGroup: rbac.authorization.k8s.io
