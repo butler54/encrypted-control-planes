@@ -2,7 +2,7 @@
 # apiVersion: "external-secrets.io/v1beta1"
 # kind: ExternalSecret
 # metadata:
-#   name: ansible-token-eso
+#   name: ansible-token-es
 #   namespace: cte
 # spec:
 #   refreshInterval: 15s
