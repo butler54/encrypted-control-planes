@@ -6,10 +6,9 @@ metadata:
   namespace: cte
 spec:
   provider:
-    server:
-      url: https://kubernetes.default.svc
-
-    auth:
-      serviceAccount: eso-sa
-
-    namespace: imperative
+    kubernetes:
+      server:
+        url: https://kubernetes.default.svc
+      auth:
+        serviceAccount: eso-sa
+      namespace: imperative
