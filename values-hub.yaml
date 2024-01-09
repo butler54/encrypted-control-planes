@@ -83,7 +83,7 @@ clusterGroup:
 
     aap-cte-config:
       name: aap-cte-config
-      project: hub
+      project: cte
       path: charts/all/aap-cte-config
 
     acm:
