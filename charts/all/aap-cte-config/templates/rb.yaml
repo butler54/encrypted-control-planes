@@ -28,7 +28,7 @@ subjects:
 - kind: ServiceAccount
   name: default
   namespace: cte
-# - kind: ServiceAccount
-#   name: golang-external-secrets
-#   namespace: golang-external-secrets
+- kind: ServiceAccount
+  name: golang-external-secrets
+  namespace: golang-external-secrets
 ---
