@@ -2,12 +2,27 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: secret-reader-binding
-  namespace: cte
+  namespace: impertaive
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: secret-reader
 subjects:
 - kind: ServiceAccount
   name: eso-sa
   namespace: cte
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: configmap-reader-binding
+  namespace: openshift-kube-apiserver
 roleRef:
-  kind: Role
-  name: secret-reader-imperative-ns
   apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: config-reader
+subjects:
+- kind: ServiceAccount
+  name: eso-sa
+  namespace: cte
+---
