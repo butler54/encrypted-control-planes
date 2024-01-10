@@ -16,5 +16,5 @@ spec:
       auth:
         serviceAccount: 
           name: eso-sa
-          namespace: cte
+          #namespace: cte
       remoteNamespace: imperative
