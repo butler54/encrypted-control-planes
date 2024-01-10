@@ -1,19 +1,19 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: secret-reader
-rules:
-- apiGroups: [""]
-  resources: ["secrets"]
-  verbs: ["get", "list", "watch"]
-  resourceNames: [""]  # Allow access to all secrets
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: config-reader
-rules:
-- apiGroups: [""]
-  resources: ["configmaps"]
-  verbs: ["get", "list", "watch"]
-  resourceNames: [""]  # Allow access to all secrets
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRole
+# metadata:
+#   name: secret-reader
+# rules:
+# - apiGroups: [""]
+#   resources: ["secrets"]
+#   verbs: ["get", "list", "watch"]
+#   resourceNames: [""]  # Allow access to all secrets
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRole
+# metadata:
+#   name: config-reader
+# rules:
+# - apiGroups: [""]
+#   resources: ["configmaps"]
+#   verbs: ["get", "list", "watch"]
+#   resourceNames: [""]  # Allow access to all secrets
