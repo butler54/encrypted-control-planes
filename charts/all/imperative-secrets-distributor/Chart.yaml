@@ -1,0 +1,6 @@
+apiVersion: v2
+description: A cluster secret store config to allow secrets created by imperative jobs to be distributed
+keywords:
+- pattern
+name: imperative-secrets-distributor
+version: 0.0.1

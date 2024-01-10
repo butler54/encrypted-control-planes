@@ -107,6 +107,11 @@ clusterGroup:
       namespace: golang-external-secrets
       project: local-cluster
       path: common/golang-external-secrets
+    imperative-secrets-distributor:
+      name: imperative-secrets-distributor
+      namespace: golang-external-secrets
+      project: local-cluster
+      path: charts/all/imperative-secrets-distributor
 
     s3:
       name: s3-controller
