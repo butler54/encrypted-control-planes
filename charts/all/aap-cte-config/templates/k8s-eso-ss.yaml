@@ -12,7 +12,7 @@ spec:
         caProvider:
           type: ConfigMap
           name: kube-root-ca.crt
-          namespace: cte
+          key: ca.crt
       auth:
         serviceAccount: 
           name: eso-sa
