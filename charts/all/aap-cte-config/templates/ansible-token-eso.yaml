@@ -11,5 +11,8 @@ spec:
     kind: SecretStore
   target:
     name: ansible-token
-  dataFrom:
-    key: controller-login-token
+  data:
+  - secretKey: token
+    remoteRef:
+      key: controller-login-token
+      property: token
