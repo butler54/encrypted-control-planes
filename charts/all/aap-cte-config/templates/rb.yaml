@@ -25,4 +25,7 @@ subjects:
 - kind: ServiceAccount
   name: eso-sa
   namespace: cte
+- kind: ServiceAccount
+  name: eso-sa
+  namespace: default
 ---
