@@ -11,7 +11,13 @@ spec:
     kind: ClusterSecretStore
   target:
     name: ansible-token
+    template:
+      mergePolicy: Merge
+      type: Opaque
+      data:
+        host: https://controller-ansible-automation-platform.{{ .Values.global.hubClusterDomain }}
   data:
+  
   - secretKey: token
     remoteRef:
       key: controller-login-token
