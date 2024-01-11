@@ -8,4 +8,3 @@ spec:
   description: Empty inventory for jobs with only local inve
   name: cte-inventory
   organization: {{ .Values.organization }}
-  
