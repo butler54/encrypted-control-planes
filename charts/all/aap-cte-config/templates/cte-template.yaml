@@ -12,3 +12,5 @@ spec:
   project: cte-automation-project
   playbook: 'ansible/pass-message.yml'
   organization: {{ .Values.organisation }}
+  credentials:
+    - test
