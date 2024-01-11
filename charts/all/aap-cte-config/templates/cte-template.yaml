@@ -10,5 +10,5 @@ spec:
   description: inventory job template
   name: cte-job-template
   project: cte-automation-project
-  playbook: 'ansible/SAMPLES/pass-message.yaml'
+  playbook: 'ansible/pass-message.yml'
   organization: {{ .Values.organisation }}
