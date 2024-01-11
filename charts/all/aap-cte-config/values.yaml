@@ -1,0 +1,3 @@
+
+# required as resource operator by default only looks at this namespace.
+aapNamespace: ansible-automation-platform

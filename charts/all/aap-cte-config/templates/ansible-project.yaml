@@ -3,12 +3,12 @@ apiVersion: "tower.ansible.com/v1alpha1"
 kind: AnsibleProject
 metadata:
   name: ansible-project
-  namespace: ansible-automation-platform
+  namespace: {{ .Values.aapNamespace }}
 spec:
   branch: main
-  connection_secret: ansible-token
+  connection_secret: {{ .Values.connctionSecret }}
   description: "Ansible project to wrap jobs interacting with the ciphetrust manager"
   name: cte-automation-project
-  organization: CTE
+  organization: {{ .Values.organization }}
   repo: {{ .Values.global.repoURL }}
   scm_type: git

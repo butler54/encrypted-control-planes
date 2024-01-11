@@ -1,0 +1,11 @@
+apiVersion: "tower.ansible.com/v1alpha1"
+kind: AnsibleInventory
+metadata:
+  name: cte-inventory
+  namespace: {{ .Values.aapNamespace }}
+spec:
+  connection_secret: {{ .Values.connectionSecret }}
+  description: Empty inventory for jobs with only local inve
+  name: cte-inventory
+  organization: {{ .Values.organization }}
+  

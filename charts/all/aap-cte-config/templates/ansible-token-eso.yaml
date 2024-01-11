@@ -3,7 +3,7 @@ apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
   name: ansible-token-es
-  namespace: ansible-automation-platform
+  namespace: {{ .Values.aapNamespace }}
 spec:
   refreshInterval: 15s
   secretStoreRef:
