@@ -7,4 +7,4 @@ spec:
   connection_secret: {{ .Values.connectionSecret }}
   description: Empty inventory for jobs with only local inve
   name: cte-inventory
-  organization: {{ .Values.organization }}
+  organization: {{ .Values.organisation }}

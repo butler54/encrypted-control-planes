@@ -10,7 +10,7 @@ spec:
     name: imperative-ss
     kind: ClusterSecretStore
   target:
-    name: ansible-token
+    name: {{ .Values.connctionSecret }}
     template:
       mergePolicy: Merge
       type: Opaque
