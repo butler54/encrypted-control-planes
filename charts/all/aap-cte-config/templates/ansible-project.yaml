@@ -3,7 +3,7 @@ apiVersion: "tower.ansible.com/v1alpha1"
 kind: AnsibleProject
 metadata:
   name: ansible-project
-  namespace: cte
+  namespace: ansible-automation-platform
 spec:
   branch: main
   connection_secret: ansible-token
