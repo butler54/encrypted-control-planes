@@ -7,4 +7,4 @@ metadata:
 spec:
   connection_secret: ansible-token
   name: ansible-job-no-vars
-  job_template_name: cte-template
+  job_template_name: cte-job-template
