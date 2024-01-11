@@ -9,6 +9,6 @@ spec:
   connection_secret: ansible-token
   description: "Ansible project to wrap jobs interacting with the ciphetrust manager"
   name: cte-automation-project
-  organization: cte
+  organization: CTE
   repo: {{ .Values.global.repoURL }}
   scm_type: git
