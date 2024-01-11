@@ -1,0 +1,15 @@
+---
+apiVersion: "tower.ansible.com/v1alpha1"
+kind: JobTemplate
+metadata:
+  name: cte-template
+  namespace: {{ .Values.aapNamespace }}
+spec:
+
+  connection_secret: {{ .Values.connectionSecret }}
+  inventory: cte-inventory
+  description: innory job template
+  name: cte-job-template
+  project: cte-automation-project
+  playbook: 'ansible/SAMPLES/pass-message.yaml'
+  organization: {{ .Values.organisation }}
