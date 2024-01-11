@@ -1,18 +1,18 @@
-# ---
-# apiVersion: "external-secrets.io/v1beta1"
-# kind: ExternalSecret
-# metadata:
-#   name: ansible-token-es
-#   namespace: cte
-# spec:
-#   refreshInterval: 15s
-#   secretStoreRef:
-#     name: cte-imperative-ss
-#     kind: SecretStore
-#   target:
-#     name: ansible-token
-#   data:
-#   - secretKey: token
-#     remoteRef:
-#       key: controller-login-token
-#       property: token
+---
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: ansible-token-es
+  namespace: cte
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: imperative-ss
+    kind: ClusterSecretStore
+  target:
+    name: ansible-token
+  data:
+  - secretKey: token
+    remoteRef:
+      key: controller-login-token
+      property: token
