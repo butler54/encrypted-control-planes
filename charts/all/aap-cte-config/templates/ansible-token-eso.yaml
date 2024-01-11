@@ -10,7 +10,7 @@ spec:
     name: imperative-ss
     kind: ClusterSecretStore
   target:
-    name: {{ .Values.connctionSecret }}
+    name: {{ .Values.connectionSecret }}
     template:
       mergePolicy: Merge
       type: Opaque
