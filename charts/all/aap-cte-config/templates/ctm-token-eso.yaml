@@ -1,0 +1,19 @@
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: ctm-token-eso
+  namespace: ack-system
+  annotations:
+    argocd.argoproj.io/sync-wave: '-10'
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: ctm-token
+    template:
+      type: Opaque
+  dataFrom:
+  - extract:
+      key: secret/data/global/cteregistrationtoken
