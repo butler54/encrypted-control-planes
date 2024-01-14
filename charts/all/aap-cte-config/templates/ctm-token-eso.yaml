@@ -2,7 +2,7 @@ apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
   name: ctm-token-eso
-  namespace: ack-system
+  namespace: {{ .Values.aapNamespace }}
 spec:
   refreshInterval: 15s
   secretStoreRef:
