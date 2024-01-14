@@ -3,8 +3,6 @@ kind: ExternalSecret
 metadata:
   name: ctm-token-eso
   namespace: ack-system
-  annotations:
-    argocd.argoproj.io/sync-wave: '-10'
 spec:
   refreshInterval: 15s
   secretStoreRef:
