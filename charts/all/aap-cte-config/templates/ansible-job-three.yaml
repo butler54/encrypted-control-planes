@@ -1,0 +1,10 @@
+---
+apiVersion: "tower.ansible.com/v1alpha1"
+kind: AnsibleJob # note must have a template
+metadata:
+  name: ansible-job-test-secrets-three
+  namespace: {{ .Values.aapNamespace }}
+spec:
+  connection_secret: ansible-token
+  name: ansible-job-test-secrets-three
+  job_template_name: cte-template-three
