@@ -13,4 +13,4 @@ spec:
   playbook: 'ansible/pass-message.yml'
   organization: {{ .Values.organisation }}
   credentials:
-    - test
+    - ctm-api-token-as-pat
