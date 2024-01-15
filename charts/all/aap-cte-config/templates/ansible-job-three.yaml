@@ -7,4 +7,4 @@ metadata:
 spec:
   connection_secret: ansible-token
   name: ansible-job-test-secrets-three
-  job_template_name: cte-template-three
+  job_template_name: cte-job-template-three # reference ansible job not the k8s definition
