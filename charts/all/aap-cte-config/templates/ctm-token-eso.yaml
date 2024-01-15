@@ -11,9 +11,12 @@ spec:
   target:
     name: ctm-token
     template:
-      type: Opaque
+      engineVersion: v2
+      data:
+        username: admin     # If you are using plain manifests or gitops tools
+        password: "{{ `{{ .password }}` }}"      
   data:
-  - secretKey: token
+  - secretKey: password
     remoteRef:
       key: secret/data/global/cteregistrationtoken
       property: registration_token
