@@ -12,6 +12,8 @@ spec:
     name: ctm-token
     template:
       type: Opaque
-  dataFrom:
-  - extract:
+  data:
+  - secretKey: token
+    remoteRef:
       key: secret/data/global/cteregistrationtoken
+      property: registration_token
