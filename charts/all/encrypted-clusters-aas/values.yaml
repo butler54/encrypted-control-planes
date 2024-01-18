@@ -22,7 +22,7 @@ sshkey:
   key: secret/data/global/clusterssh
 
 APIPublishingStrategy: NodePort
-baseDomain: sandbox949.opentlc.com
+baseDomain: 2g96t.sandbox3015.opentlc.com
 NodePortAddress: 10.0.0.1
 secretStore:
   name: vault-backend
