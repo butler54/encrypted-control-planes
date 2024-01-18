@@ -1,0 +1,13 @@
+---
+apiVersion: "tower.ansible.com/v1alpha1"
+kind: AnsibleJob # note must have a template
+metadata:
+  name: 'cte-key-{{ .Release.Namespace }}-{{ .Release.Name }}'
+  namespace: ansible-automation-platform
+spec:
+  connection_secret: ansible-token
+  name: 'cte-key-{{ .Release.Namespace }}-{{ .Release.Name }}'
+  job_template_name: cte-key-job 
+  extra_vars:
+    clusterID: '{{ .Release.Namespace }}-{{ .Release.Name }}'
+    

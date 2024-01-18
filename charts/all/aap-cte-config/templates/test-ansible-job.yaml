@@ -9,7 +9,7 @@ metadata:
 spec:
   connection_secret: ansible-token
   name: ansible-test-job
-  job_template_name: cte-job-template-three # reference ansible job not the k8s definition
+  job_template_name: cte-key-job # reference ansible job not the k8s definition
   extra_vars:
     clusterID: test-cluster
     
