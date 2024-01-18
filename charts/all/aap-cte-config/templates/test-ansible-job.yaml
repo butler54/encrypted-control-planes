@@ -1,3 +1,5 @@
+# This is a test job.
+# Unfortunately 
 ---
 apiVersion: "tower.ansible.com/v1alpha1"
 kind: AnsibleJob # note must have a template
@@ -6,5 +8,8 @@ metadata:
   namespace: {{ .Values.aapNamespace }}
 spec:
   connection_secret: ansible-token
-  name: ansible-job-test-secrets-three
+  name: ansible-test-job
   job_template_name: cte-job-template-three # reference ansible job not the k8s definition
+  extra_vars:
+    clusterID: test-cluster
+    

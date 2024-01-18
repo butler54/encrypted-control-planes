@@ -1,0 +1,116 @@
+- name: "Sample playbook to configure and setup CTE"
+  hosts: localhost
+  connection: local
+  vars:
+    clusterID: ''
+    cm_connection_string:
+      server_ip: 13.251.63.29
+      server_port: 443
+      user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('nobody', True) }}"
+      password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('nobody', True) }}"
+      verify: False
+      auth_domain_path:
+
+
+  tasks:
+  - name: "Get User ID from Name"
+    thalesgroup.ciphertrust.cm_resource_get_id_from_name:
+      localNode: "{{ cm_connection_string }}"
+      query_param: username
+      query_param_value: admin
+      resource_type: users
+    register: user
+
+  - name: "Create Key"
+    thalesgroup.ciphertrust.vault_keys2_save:
+      op_type: create
+      name: "CTE-key-{{ clusterID }}"
+      algorithm: aes
+      size: 256
+      undeletable: false
+      unexportable: false
+      usageMask: 76
+
+      meta:
+        ownerId: "{{ user['response']['id'] }}"
+
+        permissions:
+          DecryptWithKey:
+          - "CTE Clients"
+          EncryptWithKey:
+          - "CTE Clients"
+          ExportKey:
+          - "CTE Clients"
+          MACVerifyWithKey:
+          - "CTE Clients"
+          MACWithKey:
+          - "CTE Clients"
+          ReadKey:
+          - "CTE Clients"
+          SignVerifyWithKey:
+          - "CTE Clients"
+          SignWithKey:
+          - "CTE Clients"
+          UseKey:
+          - "CTE Clients"
+
+        cte:
+          persistent_on_client: true
+          encryption_mode: CBC_CS1
+          cte_versioned: false
+      xts: true
+      localNode: "{{ cm_connection_string }}"
+
+    ignore_errors: true
+
+
+
+  - name: "Create CTE Policy Element - Resource Set"
+    thalesgroup.ciphertrust.cte_resource_set:
+      localNode: "{{ cm_connection_string }}"
+      op_type: create
+      name: "RS-Ans-{{ clusterID }}" # incremented to test
+      description: "Created via Ansible"
+      type: Directory
+      resources:
+      - directory: "/"
+        file: "*"
+        include_subfolders: true
+        hdfs: false
+    ignore_errors: true
+
+
+
+  - name: "Create CTE Policy"
+
+    thalesgroup.ciphertrust.cte_policy_save:
+      localNode: "{{ cm_connection_string }}"
+      op_type: create
+      name: "Policy-{{ clusterID }}"
+      description: "Created via Ansible"
+      never_deny: false
+      metadata:
+        restrict_update: false
+
+      security_rules:
+      - action: key_op
+        effect: "permit,applykey"
+        partial_match: true
+      - resource_set_id: "RS-Ans-{{ clusterID }}"
+        exclude_resource_set: false
+        partial_match: true
+        action: all_ops
+        effect: "permit,audit,applykey"
+      policy_type: CSI
+
+      key_rules:
+      - key_id: "CTE-key-{{ clusterID }}"
+        resource_set_id: "RS-Ans-{{ clusterID }}"
+
+      data_transform_rules:
+      - key_id: "CTE-key-{{ clusterID }}"
+        resource_set_id: "RS-Ans-{{ clusterID }}"
+
+    ignore_errors: true
+    register: policy
+

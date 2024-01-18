@@ -11,3 +11,6 @@ common/pattern-vault.init
 # Drawio backup files
 *.bkp
 *.dtmp
+
+# Ignore direnv files
+.envrc
