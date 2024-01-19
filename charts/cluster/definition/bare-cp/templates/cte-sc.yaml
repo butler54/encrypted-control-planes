@@ -9,7 +9,7 @@ allowVolumeExpansion: true
 parameters:
 
   # Domain name or IP address of the CipherTrust Manager (Required)
-  key_manager_addr: 13.212.115.178
+  key_manager_addr: 13.251.63.29
 
   # Name of the CipherTrust Manager K8s Storage Group. (Required)
   k8_storage_group: sg-{{ .Release.Namespace }}-{{ .Release.Name }}
