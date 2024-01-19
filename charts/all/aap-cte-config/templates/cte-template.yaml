@@ -13,4 +13,4 @@ spec:
   playbook: 'ansible/cte-job.yaml'
   organization: {{ .Values.organisation }}
   credentials:
-    - ctm-password
+    - ctm-password-as-network
