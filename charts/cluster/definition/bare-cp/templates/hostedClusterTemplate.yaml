@@ -1,10 +1,10 @@
 apiVersion: hypershift.openshift.io/v1alpha1
 kind: HostedCluster
 metadata:
-  name: '{{ .Release.Namespace }}-{{ .Release.Name }}'
+  name: '{{ .Release.Name }}'
 spec:
   dns:
-    baseDomain: '{{ .Release.Namespace }}-{{ .Release.Name }}.{{ .Values.baseDomain }}'
+    baseDomain: '{{ .Release.Name }}.{{ .Values.baseDomain }}'
   etcd:
     managed:
       storage:

@@ -3,7 +3,7 @@ kind: NodePool
 metadata:
   name: 'np-{{ .Release.Namespace }}-{{ .Release.Name }}'
 spec:
-  clusterName: {{ .Release.Namespace }}-{{ .Release.Name }}
+  clusterName: '{{ .Release.Name }}'
   management:
     autoRepair: false
     replace:

@@ -4,4 +4,4 @@ metadata:
   name: hsclsempty-2
   namespace: cluster
 spec:
-  clusterTemplateRef: hypershift-control-plane-only-ha
+  clusterTemplateRef: hypershift-control-plane-only
