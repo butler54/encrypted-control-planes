@@ -14,6 +14,6 @@ spec:
   organization: {{ .Values.organisation }}
   credentials:
     - ctm-password-as-network
-
+  ask_variables_on_launch: true
   extra_vars:
     clusterID: 'placeholder'
