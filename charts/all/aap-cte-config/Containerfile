@@ -1,3 +1,4 @@
 FROM ee-supported-rhel8:latest
+RUN dnf install python-urllib3 
 RUN ansible-galaxy collection install thalesgroup.ciphertrust
 

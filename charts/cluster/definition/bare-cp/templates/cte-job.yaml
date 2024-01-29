@@ -9,5 +9,5 @@ spec:
   name: 'cte-key-{{ .Release.Name }}'
   job_template_name: cte-key-job
   extra_vars:
-    clusterID: '{{ .Release.Name }}'
+    new_cluster_id: '{{ .Release.Name }}'
   

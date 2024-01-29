@@ -16,4 +16,4 @@ spec:
     - ctm-password-as-network
   ask_variables_on_launch: true
   extra_vars:
-    clusterID: 'placeholder'
+    new_cluster_id: 'placeholder'

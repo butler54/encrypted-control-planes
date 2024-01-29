@@ -2,6 +2,7 @@
   hosts: localhost
   connection: local
   vars:
+    new_cluster_id: ''
     clusterID: ''
     cm_connection_string:
       server_ip: 13.251.63.29
@@ -44,7 +45,7 @@
   - name: "Create Key"
     thalesgroup.ciphertrust.vault_keys2_save:
       op_type: create
-      name: "CTE-key-{{ clusterID }}"
+      name: "CTE-key-{{ new_cluster_id }}"
       algorithm: aes
       size: 256
       undeletable: false
@@ -89,7 +90,7 @@
     thalesgroup.ciphertrust.cte_resource_set:
       localNode: "{{ cm_connection_string }}"
       op_type: create
-      name: "RS-Ans-{{ clusterID }}" # incremented to test
+      name: "RS-Ans-{{ new_cluster_id }}" # incremented to test
       description: "Created via Ansible"
       type: Directory
       resources:
@@ -106,7 +107,7 @@
     thalesgroup.ciphertrust.cte_policy_save:
       localNode: "{{ cm_connection_string }}"
       op_type: create
-      name: "Policy-{{ clusterID }}"
+      name: "Policy-{{ new_cluster_id }}"
       description: "Created via Ansible"
       never_deny: false
       metadata:
@@ -116,7 +117,7 @@
       - action: key_op
         effect: "permit,applykey"
         partial_match: true
-      - resource_set_id: "RS-Ans-{{ clusterID }}"
+      - resource_set_id: "RS-Ans-{{ new_cluster_id }}"
         exclude_resource_set: false
         partial_match: true
         action: all_ops
@@ -124,12 +125,12 @@
       policy_type: CSI
 
       key_rules:
-      - key_id: "CTE-key-{{ clusterID }}"
-        resource_set_id: "RS-Ans-{{ clusterID }}"
+      - key_id: "CTE-key-{{ new_cluster_id }}"
+        resource_set_id: "RS-Ans-{{ new_cluster_id }}"
 
       data_transform_rules:
-      - key_id: "CTE-key-{{ clusterID }}"
-        resource_set_id: "RS-Ans-{{ clusterID }}"
+      - key_id: "CTE-key-{{ new_cluster_id }}"
+        resource_set_id: "RS-Ans-{{ new_cluster_id }}"
 
     ignore_errors: true
     register: policy

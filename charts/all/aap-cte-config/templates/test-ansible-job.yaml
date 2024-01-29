@@ -11,5 +11,5 @@ spec:
   name: ansible-test-job
   job_template_name: cte-key-job # reference ansible job not the k8s definition
   extra_vars:
-    clusterID: test-cluster
+    new_cluster_id: test-cluster
     
