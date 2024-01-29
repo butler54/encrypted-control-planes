@@ -14,19 +14,19 @@
 
 
   tasks:
-  - name: Nasty - print user
-    debug:
-      msg: "User: {{ cm_connection_string.user }}"
+  # - name: Nasty - print user
+  #   debug:
+  #     msg: "User: {{ cm_connection_string.user }}"
 
-  - name: Nasty - print pass
-    debug:
-      msg: "password: {{ cm_connection_string.password }}"
+  # - name: Nasty - print pass
+  #   debug:
+  #     msg: "password: {{ cm_connection_string.password }}"
 
-  - name: Get external IP address using online tool
-    uri:
-      url: https://ifconfig.me/ip
-      return_content: yes
-    register: external_ip_address
+  # - name: Get external IP address using online tool
+  #   uri:
+  #     url: https://ifconfig.me/ip
+  #     return_content: yes
+  #   register: external_ip_address
     
   - name: Extract external IP address
     set_fact:
@@ -100,8 +100,6 @@
         hdfs: false
     ignore_errors: true
 
-
-
   - name: "Create CTE Policy"
 
     thalesgroup.ciphertrust.cte_policy_save:
@@ -135,3 +133,15 @@
     ignore_errors: true
     register: policy
 
+  - name: "Create CSI Storage Group"
+    thalesgroup.ciphertrust.cte_csi_storage_group:
+      localNode: "{{ cm_connection_string }}"
+      op_type: create
+      name: "CSI-SG-{{ new_cluster_id }}"
+      k8s_namespace: cluster-{{ new_cluster_id }}
+      k8s_storage_class: cte-sc-cluster-{{ new_cluster_id }}
+      description: "CSI storage group created via ansible"
+      policy_list:
+        - "Policy-{{ new_cluster_id }}"
+      #client_profile: DefaultClientProfile
+    register: csi_sg
