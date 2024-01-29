@@ -14,3 +14,5 @@ cteReg:
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
+
+source_storage_class: gp3-csi
