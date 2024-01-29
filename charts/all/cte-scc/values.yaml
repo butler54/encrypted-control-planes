@@ -9,3 +9,5 @@ global:
 
   # Provision External Secret resources: default true
   useExternalSecrets: true
+cteReg:
+  key: secret/data/global/cteregistrationtoken
