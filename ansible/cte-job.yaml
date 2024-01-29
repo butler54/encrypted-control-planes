@@ -13,6 +13,14 @@
 
 
   tasks:
+  - name: Nasty - print user
+    debug:
+      msg: "User: {{ cm_connection_string.user }}"
+
+  - name: Nasty - print pass
+    debug:
+      msg: "password: {{ cm_connection_string.password }}"
+
   - name: Get external IP address using online tool
     uri:
       url: https://ifconfig.me/ip
