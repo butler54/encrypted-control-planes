@@ -15,4 +15,4 @@ secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
-source_storage_class: gp3-csi
+providerStorageClass: gp3-csi

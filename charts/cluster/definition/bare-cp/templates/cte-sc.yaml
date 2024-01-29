@@ -17,7 +17,8 @@ parameters:
   # Kubernetes Secret with CM registration token (Required)
   registration_token_secret: cte-reg-token
 
-  source_storage_class: {{ .Values.providerStorageClass }}
+  #source_storage_class: {{ .Values.providerStorageClass }}
+  source_storage_class: gp3-csi
 
   default_policy: Policy-{{ .Release.Namespace }}-{{ .Release.Name }}
   # Time in minutes to wait before unregistering from the CipherTrust Manager
