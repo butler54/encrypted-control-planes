@@ -1,0 +1,3 @@
+FROM ee-supported-rhel8:latest
+RUN ansible-galaxy collection install thalesgroup.ciphertrust
+

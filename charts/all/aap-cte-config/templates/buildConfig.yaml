@@ -1,0 +1,27 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: cte-worker
+  namespace: {{ .Values.aapNamespace }}
+  labels:
+    app: cte-worker
+spec:
+  source:
+    type: Git
+    git:
+      uri: {{ .Values.global.repoURL }}
+    contextDir: charts/all/aap-cte-config
+  strategy:
+    type: Docker                      
+    dockerStrategy:
+      dockerfilePath: Containerfile
+      from:
+        kind: ImageStreamTag  
+        namespace: {{ .Values.aapNamespace }}
+        name: ee-supported-rhel8:latest
+  output:
+    to:
+      kind: ImageStreamTag
+      name: cte-worker:latest
+  triggers:
+  - type: ImageChange

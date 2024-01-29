@@ -1,0 +1,15 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ee-supported-rhel8
+  namespace: ansible-automation-platform
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+    referencePolicy:
+      type: Source
