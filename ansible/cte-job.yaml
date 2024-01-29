@@ -13,6 +13,16 @@
 
 
   tasks:
+  - name: Get external IP address using online tool
+    uri:
+      url: https://ifconfig.me/
+    register: external_ip_address
+  - name: Extract external IP address
+    set_fact:
+      external_ip: "{{ external_ip_address.content }}"
+  - name: Print the apparent external IP
+    debug:
+      msg: "Apparent external IP: {{ external_ip }}"
   - name: "Get User ID from Name"
     thalesgroup.ciphertrust.cm_resource_get_id_from_name:
       localNode: "{{ cm_connection_string }}"
