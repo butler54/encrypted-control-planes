@@ -138,7 +138,7 @@
     thalesgroup.ciphertrust.cte_csi_storage_group:
       localNode: "{{ cm_connection_string }}"
       op_type: create
-      name: "CSI-SG-{{ new_cluster_id }}"
+      name: "sg-cluster-{{ new_cluster_id }}"
       k8s_namespace: cluster-{{ new_cluster_id }}
       k8s_storage_class: cte-sc-cluster-{{ new_cluster_id }}
       description: "CSI storage group created via ansible"
