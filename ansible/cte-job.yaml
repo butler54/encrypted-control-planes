@@ -141,10 +141,9 @@
 
       op_type: create
       name: "sg-cluster-{{ new_cluster_id }}"
-      k8s_namespace: cluster-{{ new_cluster_id }}
-      k8s_storage_class: cte-sc-cluster-{{ new_cluster_id }}
+      k8s_namespace: "cluster-{{ new_cluster_id }}"
+      k8s_storage_class: "cte-sc-cluster-{{ new_cluster_id }}"
       description: "CSI storage group created via ansible"
-      client_profile: stuff
     register: csi_sg
 
   - name: "Add guarpolicy to the CSI Storage Group"
