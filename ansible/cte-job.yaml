@@ -34,7 +34,9 @@
   # - name: Print the apparent external IP
   #   debug:
   #     msg: "Apparent external IP: {{ external_ip }}"
-
+  - name: Print clusterid 
+    debug:
+      msg: "Cluster ID: {{ new_cluster_id }}"
   - name: "Get User ID from Name"
     thalesgroup.ciphertrust.cm_resource_get_id_from_name:
       localNode: "{{ cm_connection_string }}"
