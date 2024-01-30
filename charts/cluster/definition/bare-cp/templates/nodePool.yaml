@@ -27,4 +27,4 @@ spec:
   release:
     image: >-
       quay.io/openshift-release-dev/ocp-release:{{ .Values.ocpVersion }}-{{ .Values.ocpArch }}
-  replicas: ${ .nodepoolReplicas }
+  replicas: 0
