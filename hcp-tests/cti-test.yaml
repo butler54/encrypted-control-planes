@@ -1,7 +1,7 @@
 apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplateInstance
 metadata:
-  name: empty
+  name: empty-ivan-test
   namespace: cluster
 spec:
   clusterTemplateRef: hypershift-control-plane-only

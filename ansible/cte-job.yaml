@@ -153,3 +153,4 @@
       id: "{{ csi_sg['response']['id'] }}"
       policy_list:
         - "Policy-{{ new_cluster_id }}"
+     ignore_errors: true  # Failed reporting today.
