@@ -1,6 +1,29 @@
 # Environment setup
-This is currenly based on the experience of using RHDPS.
+This is currenly based on the experience of using Red Hat's Demo Platform (RHDP)
 Optimal ordering depends on the infrastructure environment and available automation.
+
+
+
+## Workflow
+
+```mermaid
+---
+title: Provisioning
+---
+
+flowchart LR
+  start((start))
+  done((done))
+  provision_cluster[Provision AWS open environment]
+  
+  start --> provision_cluster
+  provision_cluster --> done
+  
+```
+
+
+
+
 
 ## High level workflow
 
