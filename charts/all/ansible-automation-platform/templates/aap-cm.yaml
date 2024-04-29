@@ -4,6 +4,6 @@ metadata:
     name: aap-configmap
     namespace: ansible-automation-platform
 data:
-    aapURL: {{ .Values.global.aapURL }}
+    aapURL: {{ .Values.global.ecp.aapURL }}
     project_repo: "{{ $.Values.global.repoURL }}"
     project_branch: "{{ $.Values.global.targetRevision }}"

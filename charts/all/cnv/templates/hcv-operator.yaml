@@ -1,4 +1,4 @@
-{{- if .Values.global.nestedVirt }}
+{{- if .Values.global.ecp.cnv }}
 apiVersion: hco.kubevirt.io/v1beta1
 kind: HyperConverged
 metadata:

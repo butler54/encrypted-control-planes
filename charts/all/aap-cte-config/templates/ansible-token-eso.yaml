@@ -15,9 +15,8 @@ spec:
       mergePolicy: Merge
       type: Opaque
       data:
-        host: https://controller-ansible-automation-platform.{{ .Values.global.hubClusterDomain }}
+        host: {{ default (printf "https://controller-ansible-automation-platform.%s" .Values.global.hubClusterDomain) .Values.global.ecp.aapURL | ne "" }}
   data:
-  
   - secretKey: token
     remoteRef:
       key: controller-login-token

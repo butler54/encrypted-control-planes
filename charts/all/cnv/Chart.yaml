@@ -1,5 +1,5 @@
 apiVersion: v2
-name: cvn
+name: cnv
 description: Deployment config for kubevirt
 
 # A chart can be either an 'application' or a 'library' chart.

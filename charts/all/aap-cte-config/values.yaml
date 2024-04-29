@@ -1,8 +1,9 @@
 
 # required as resource operator by default only looks at this namespace.
 aapNamespace: ansible-automation-platform
-
 connectionSecret: ansible-token
-
 organisation: CTE
 
+global:
+  ecp:
+    cipherTrustIP: ''

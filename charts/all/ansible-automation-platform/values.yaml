@@ -1,6 +1,7 @@
 global:
   # if defined it's assumed to me an external ansible cluster
-  aapURL: ''
+  ecp:
+    aapURL: ''
 
 secretStore:
   name: vault-backend
@@ -8,3 +9,5 @@ secretStore:
 
 aapManifest:
   key: 'secret/data/global/aap-manifest'
+controller:
+  key: 'secret/data/global/aap-token'

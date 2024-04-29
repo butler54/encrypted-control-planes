@@ -7,27 +7,51 @@ Optimal ordering depends on the infrastructure environment and available automat
 ## Workflow
 
 ```mermaid
----
-title: Provisioning
----
 
-flowchart LR
+
+flowchart
   start((start))
   done((done))
   provision_cluster[Provision AWS open environment]
+  configure_pattern[Configure the pattern]
+  provision_pattern[Provision pattern]
+  get_aws_creds[Collect AWS credentials from RHDP]
+  discover_aws_environment[Discover AWS enviroment setup from console]
+  provision_ciphetrust[Provision ciphertrust manager with terraform]
+  get_aap_manifest[Get AAP manifest file from console.redhat.com]
+  get_docker_secret[Login and get the docker.io pull secret]
+  update_external_secrets[Inject secrets into the pattern]
+  ciphertrust_token[Get a ciphertrust token]
+  provision_hosted_clusters[Use cluster templates to provision hosted clusters]
+  configure_aap[Setup AAP execution environment]
   
   start --> provision_cluster
-  provision_cluster --> done
-  
+  start --> get_aap_manifest
+  start --> get_docker_secret
+  start --> configure_pattern
+  provision_cluster --> get_aws_creds
+  provision_cluster --> discover_aws_environment
+  get_aws_creds --> provision_ciphertrust
+  discover_aws_environment --> provision_ciphertrust
+  provision_ciphertrust --> ciphertrust_token
+  configure_pattern --> provision_pattern
+  provision_cluster --> provision_pattern
+  provision_pattern --> update_external_secrets
+  get_aws_creds --> update_external_secrets
+  ciphertrust_token --> update_external_secrets
+  get_aap_manifest --> update_external_secrets
+  get_docker_secret --> update_external_secrets
+  update_external_secrets --> configure_aap
+  configure_aap --> provision_hosted_clusters
+  provision_hosted_clusters --> done
+
 ```
 
+###
 
 
 
 
-## High level workflow
-
-![](./assets/provisioning-workflows.drawio.png)
 
 
 ## Network requirements

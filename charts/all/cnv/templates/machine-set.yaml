@@ -1,4 +1,15 @@
-{{- if .Values.global.awsMachinePool }}
+{{- if .Values.global.ecp.cnvAWSBareMetal }}
+# WARNING
+# WARNING
+# WARNING
+# WARNING
+# WARNING
+# WARNING
+# This is not ready and / or is very expensive
+# WARNING
+# WARNING
+# WARNING
+
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:

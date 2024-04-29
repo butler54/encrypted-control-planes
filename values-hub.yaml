@@ -125,23 +125,17 @@ clusterGroup:
       project: hypershift
       path: charts/all/hypershift
 
-    htpassword:
-      name: htpassword
-      namespace: openshift-config
-      project: test-config
-      path: charts/all/htpassword
-
     cte-scc:
       name: cte-scc
       namespace: cte
       project: cte
       path: charts/all/cte-scc
 
-    # cnv:
-    #   name: cnv
-    #   namespace: openshift-cnv
-    #   project: cnv
-    #   path: charts/all/cnv
+    cnv:
+      name: cnv
+      namespace: openshift-cnv
+      project: cnv
+      path: charts/all/cnv
 
     caas:
       name: encrypted-clusters-aas

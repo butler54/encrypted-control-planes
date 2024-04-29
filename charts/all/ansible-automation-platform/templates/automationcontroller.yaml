@@ -1,3 +1,4 @@
+{{ if .Values.global.ecp.aapURL | default "" | eq "" }}
 apiVersion: automationcontroller.ansible.com/v1beta1
 kind: AutomationController
 metadata:
@@ -15,3 +16,4 @@ spec:
   projects_persistence: false
   replicas: 1
   admin_user: admin
+{{ end }}
