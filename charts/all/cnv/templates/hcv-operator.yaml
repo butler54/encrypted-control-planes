@@ -1,4 +1,4 @@
-{{- if .Values.global.ecp.cnv }}
+{{- if .Values.global.ecp.cnv.enabled }}
 apiVersion: hco.kubevirt.io/v1beta1
 kind: HyperConverged
 metadata:

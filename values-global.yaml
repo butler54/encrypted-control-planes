@@ -15,11 +15,21 @@ global:
 
     # Whether or not to deploy OCP-V on a BM instance for AWS.
     # Assumes ROSA is not being used for the deployment.
-    cnv: false
-    cnvAWSBareMetal: false
-
+    cnv:
+      enabled: false
+      nestedVirt: false
+      AWSBareMetal:
+        enabled: false
+        nodeFlavour: m5.metal
+        nodeCount: 1
+        region: ''
+        availabilityZone: ''
     # Base storage class to use. 
     storageClass: gp3-csi
+
+    APIPublishingStrategy: NodePort
+    baseDomain: 2g96t.sandbox3015.opentlc.com
+    NodePortAddress: 10.0.0.1
 
 main:
   clusterGroupName: hub

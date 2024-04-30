@@ -1,4 +1,4 @@
-{{- if .Values.global.ecp.cnvAWSBareMetal }}
+{{- if .Values.global.ecp.cnv.aws.enabled }}
 # WARNING
 # WARNING
 # WARNING
@@ -13,7 +13,7 @@
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
+  name: manual-machine-set
   namespace: openshift-machine-api
   labels:
     machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j

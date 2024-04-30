@@ -1,5 +1,5 @@
 # Bad stuff could happen if this is not correct.
-{{- if .Values.global.ecp.cnv }}
+{{- if .Values.global.ecp.cnv.enabled }}
 apiVersion: operator.openshift.io/v1
 kind: IngressController
 metadata:

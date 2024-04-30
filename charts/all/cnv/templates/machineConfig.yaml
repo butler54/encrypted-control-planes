@@ -1,4 +1,4 @@
-{{- if  .Values.global.ecp.nestedVirt }}
+{{- if  .Values.global.ecp.cnv.nestedVirt }}
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:

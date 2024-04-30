@@ -4,6 +4,12 @@
 
 global:
   ecp:
-    cnv: false
-    cnvAWSBareMetal: false
-    nestedVirt: false
+    cnv:
+      enabled: false
+      nestedVirt: false
+      AWSBareMetal:
+        enabled: false
+        nodeFlavour: m5.metal
+        nodeCount: 1
+        region: ''
+        availabilityZone: ''
