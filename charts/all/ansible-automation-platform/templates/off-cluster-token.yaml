@@ -1,0 +1,18 @@
+# Only required if installing AAP is not on the cluster.
+{{ if .Values.global.ecp.aapURL | default "" | ne "" }}
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: controler-token-eso
+  namespace: imperative
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: {{ .Values.secretStore.name }}
+    kind: {{ .Values.secretStore.kind }}
+  target:
+    name: controller-login-token
+  dataFrom:
+  - extract:
+      key: {{ .Values.controller.key }}
+{{ end }}

@@ -1,10 +1,7 @@
 
 namespace: cluster
 project: cluster
-global:
-  useExternalSecrets: true
-  targetRevision: main
-  repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
+
 templates:
 - name: control-plane-only
   definition: 'bare-cp'
@@ -18,12 +15,44 @@ templates:
   nodes: "0"
   bootstrap: false
 
+- name: kubevirt-single-node
+  definition: 'kubevirt'
+  cpPolicy: SingleReplica
+  nodes: "1"
+  bootstrap: false
+
+- name: kubevirt-three-node
+  definition: 'kubevirt'
+  cpPolicy: SingleReplica
+  nodes: "3"
+  bootstrap: false
+
+- name: aws-single-node
+  definition: 'aws'
+  cpPolicy: SingleReplica
+  nodes: "1"
+  bootstrap: false
+
+- name: aws-three-node
+  definition: 'aws'
+  cpPolicy: SingleReplica
+  nodes: "3"
+  bootstrap: false
+
 sshkey:
   key: secret/data/global/clusterssh
 
-APIPublishingStrategy: NodePort
-baseDomain: 2g96t.sandbox3015.opentlc.com
-NodePortAddress: 10.0.0.1
+
+global:
+  useExternalSecrets: true
+  targetRevision: main
+  repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
+  ecp:
+    APIPublishingStrategy: NodePort
+    baseDomain: 2g96t.sandbox3015.opentlc.com
+    NodePortAddress: 10.0.0.1
+
+
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore

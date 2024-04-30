@@ -18,6 +18,9 @@ global:
     cnv: false
     cnvAWSBareMetal: false
 
+    # Base storage class to use. 
+    storageClass: gp3-csi
+
 main:
   clusterGroupName: hub
 
