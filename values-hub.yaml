@@ -1,3 +1,6 @@
+### WARNING ### 
+### Currently configured for bare metal deployment where ACM is pre-installed
+
 
 clusterGroup:
   name: hub
@@ -14,20 +17,20 @@ clusterGroup:
   - cte
   - cluster
   - ansible-automation-platform
-  - openshift-logging
 
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.9
-      #csv: advanced-cluster-management.v2.6.1
-    s3:
-      name: ack-s3-controller
-      namespace: ack-system
-      channel: alpha
-      source: community-operators
-
+    # NOT BARE METAL
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.9
+    #   #csv: advanced-cluster-management.v2.6.1
+    # s3:
+    #   name: ack-s3-controller
+    #   namespace: ack-system
+    #   channel: alpha
+    #   source: community-operators
+    # END NOTE BARE METAL
     cte:
       name: cte-k8s-operator
       namespace: openshift-operators
@@ -35,11 +38,13 @@ clusterGroup:
       source: certified-operators
     # Note CNV operator is not required all the time, however, it does not carry much weight until
     # HyperConverged object is deployed.
+
+    # NOT BARE METAL
     cnv:
       name: kubevirt-hyperconverged
       namespace: openshift-cnv
       channel: stable
-
+    # END NOT BARE METAL
     caas:
       name: cluster-aas-operator
       namespace: openshift-operators
@@ -52,10 +57,6 @@ clusterGroup:
       name: ansible-automation-platform-operator
       namespace: ansible-automation-platform
 
-    openshift-logging:
-      name: cluster-logging
-      namespace: openshift-logging
-      channel: stable
 
   projects:
   - local-cluster
@@ -85,17 +86,18 @@ clusterGroup:
       name: aap-cte-config
       project: cte
       path: charts/all/aap-cte-config
+    # PRE-INSTALLED
+    # acm:
+    #   name: acm
+    #   namespace: open-cluster-management
+    #   project: local-cluster
+    #   path: common/acm
+    #   ignoreDifferences:
+    #   - group: internal.open-cluster-management.io
+    #     kind: ManagedClusterInfo
+    #     jsonPointers:
+    #     - /spec/loggingCA
 
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: local-cluster
-      path: common/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-        - /spec/loggingCA
     vault:
       name: vault
       namespace: vault
@@ -107,35 +109,36 @@ clusterGroup:
       namespace: golang-external-secrets
       project: local-cluster
       path: common/golang-external-secrets
+
     imperative-secrets-distributor:
       name: imperative-secrets-distributor
       namespace: golang-external-secrets
       project: local-cluster
       path: charts/all/imperative-secrets-distributor
 
-    s3:
-      name: s3-controller
-      namespace: ack-system
-      project: s3
-      path: charts/all/ack-s3
-
-    hypershift:
-      name: hypershift
-      namespace: multicluster-engine
-      project: hypershift
-      path: charts/all/hypershift
-
+    # s3:
+    #   name: s3-controller
+    #   namespace: ack-system
+    #   project: s3
+    #   path: charts/all/ack-s3
+    # PRE INSTALLED
+    # hypershift:
+    #   name: hypershift
+    #   namespace: multicluster-engine
+    #   project: hypershift
+    #   path: charts/all/hypershift
+    # END PRE-INSTALLED
     cte-scc:
       name: cte-scc
       namespace: cte
       project: cte
       path: charts/all/cte-scc
-
-    cnv:
-      name: cnv
-      namespace: openshift-cnv
-      project: cnv
-      path: charts/all/cnv
+    # PRE-INSTALLED
+    # cnv:
+    #   name: cnv
+    #   namespace: openshift-cnv
+    #   project: cnv
+    #   path: charts/all/cnv
 
     caas:
       name: encrypted-clusters-aas
@@ -148,12 +151,6 @@ clusterGroup:
       namespace: ansible-automation-platform
       project: local-cluster
       path: charts/all/aap-config
-
-    logging:
-      name: logging
-      namespace: openshift-operators
-      project: default
-      path: charts/all/logging
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
