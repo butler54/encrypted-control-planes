@@ -1,0 +1,30 @@
+{{- if .Values.global.ecp.cnv.bm }}
+apiVersion: agent-install.openshift.io/v1beta1
+kind: AgentServiceConfig
+metadata:
+  namespace: multicluster-engine
+  name: agent
+  annotations:
+    unsupported.agent-install.openshift.io/assisted-service-configmap: assisted-service-config
+spec:
+  databaseStorage:
+    storageClassName: lvms-vg1
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+  filesystemStorage:
+    storageClassName: lvms-vg1
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+  osImages:
+    - openshiftVersion: "4.14"
+      url: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.14/4.14.0/rhcos-4.14.0-x86_64-live.x86_64.iso"
+      rootFSUrl: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.14/4.14.0/rhcos-4.14.0-x86_64-live-rootfs.x86_64.img"
+      cpuArchitecture: "x86_64"
+      version: "414.92.202310210434-0"
+{{ end }}

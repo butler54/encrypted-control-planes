@@ -1,0 +1,9 @@
+{{- if .Values.global.ecp.cnv.bm }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: assisted-service-config
+  namespace: multicluster-engine
+data:
+  ALLOW_CONVERGED_FLOW: "false"
+{{ end }}

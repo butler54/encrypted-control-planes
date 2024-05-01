@@ -11,13 +11,14 @@ global:
     aapURL: ''
 
     # IP for a CTM server. Assumes 
-    cipherTrustIP: ''
+    cipherTrustIP: '18.143.78.6'
 
     # Whether or not to deploy OCP-V on a BM instance for AWS.
     # Assumes ROSA is not being used for the deployment.
     cnv:
       enabled: false
       nestedVirt: false
+      bm: true
       AWSBareMetal:
         enabled: false
         nodeFlavour: m5.metal

@@ -24,4 +24,6 @@ global:
   s3:
     region: ''
     bucketName: ''
+  cnv:
+    bm: true
 # End global parameters
