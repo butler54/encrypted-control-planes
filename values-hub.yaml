@@ -20,10 +20,10 @@ clusterGroup:
 
   subscriptions:
     # NOT BARE METAL
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.9
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.9
     #   #csv: advanced-cluster-management.v2.6.1
     # s3:
     #   name: ack-s3-controller
@@ -40,10 +40,10 @@ clusterGroup:
     # HyperConverged object is deployed.
 
     # NOT BARE METAL
-    cnv:
-      name: kubevirt-hyperconverged
-      namespace: openshift-cnv
-      channel: stable
+    # cnv:
+    #   name: kubevirt-hyperconverged
+    #   namespace: openshift-cnv
+    #   channel: stable
     # END NOT BARE METAL
     caas:
       name: cluster-aas-operator
@@ -87,16 +87,16 @@ clusterGroup:
       project: cte
       path: charts/all/aap-cte-config
     # PRE-INSTALLED
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: local-cluster
-      path: common/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-        - /spec/loggingCA
+    # acm:
+    #   name: acm
+    #   namespace: open-cluster-management
+    #   project: local-cluster
+    #   path: common/acm
+    #   ignoreDifferences:
+    #   - group: internal.open-cluster-management.io
+    #     kind: ManagedClusterInfo
+    #     jsonPointers:
+    #     - /spec/loggingCA
 
     vault:
       name: vault
@@ -122,11 +122,11 @@ clusterGroup:
     #   project: s3
     #   path: charts/all/ack-s3
     # PRE INSTALLED
-    hypershift:
-      name: hypershift
-      namespace: multicluster-engine
-      project: hypershift
-      path: charts/all/hypershift
+    # hypershift:
+    #   name: hypershift
+    #   namespace: multicluster-engine
+    #   project: hypershift
+    #   path: charts/all/hypershift
     # END PRE-INSTALLED
     cte-scc:
       name: cte-scc
@@ -134,11 +134,11 @@ clusterGroup:
       project: cte
       path: charts/all/cte-scc
     # PRE-INSTALLED
-    cnv:
-      name: cnv
-      namespace: openshift-cnv
-      project: cnv
-      path: charts/all/cnv
+    # cnv:
+    #   name: cnv
+    #   namespace: openshift-cnv
+    #   project: cnv
+    #   path: charts/all/cnv
 
     caas:
       name: encrypted-clusters-aas
