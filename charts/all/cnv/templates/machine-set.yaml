@@ -1,89 +1,89 @@
-{{- if .Values.global.ecp.cnv.aws.enabled }}
-# WARNING
-# WARNING
-# WARNING
-# WARNING
-# WARNING
-# WARNING
-# This is not ready and / or is very expensive
-# WARNING
-# WARNING
-# WARNING
+# {{- if .Values.global.ecp.cnv.aws.enabled }}
+# # WARNING
+# # WARNING
+# # WARNING
+# # WARNING
+# # WARNING
+# # WARNING
+# # This is not ready and / or is very expensive
+# # WARNING
+# # WARNING
+# # WARNING
 
-apiVersion: machine.openshift.io/v1beta1
-kind: MachineSet
-metadata:
-  name: manual-machine-set
-  namespace: openshift-machine-api
-  labels:
-    machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
-      machine.openshift.io/cluster-api-machineset:  cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
-  template:
-    metadata:
-      labels:
-        machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
-        machine.openshift.io/cluster-api-machine-role: worker
-        machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset:  cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
-    spec:
-      lifecycleHooks: {}
-      metadata: {}
-      providerSpec:
-        value:
-          userDataSecret:
-            name: worker-user-data
-          placement:
-            availabilityZone: ap-southeast-1c
-            region: ap-southeast-1
-          credentialsSecret:
-            name: aws-cloud-credentials
-          instanceType: m5.metal
-          metadata:
-            creationTimestamp: null
-          blockDevices:
-            - ebs:
-                encrypted: true
-                iops: 0
-                kmsKey:
-                  arn: ''
-                volumeSize: 100
-                volumeType: gp2
-          securityGroups:
-            - filters:
-                - name: 'tag:Name'
-                  values:
-                    - cluster-fdjpc-8zq9j-worker-sg
-          kind: AWSMachineProviderConfig
-          metadataServiceOptions: {}
-          tags:
-            - name: kubernetes.io/cluster/cluster-fdjpc-8zq9j
-              value: owned
-            - name: Stack
-              value: project ocp4-cluster-fdjpc
-            - name: env_type
-              value: ocp4-cluster
-            - name: guid
-              value: fdjpc
-            - name: owner
-              value: unknown
-            - name: platform
-              value: RHPDS
-            - name: uuid
-              value: 33cd9656-11bb-5605-9656-80c942aa8c9a
-          deviceIndex: 0
-          ami:
-            id: ami-0dc3e381a731ab9fc
-          subnet:
-            filters:
-              - name: 'tag:Name'
-                values:
-                  - cluster-fdjpc-8zq9j-private-ap-southeast-1c
-          apiVersion: machine.openshift.io/v1beta1
-          iamInstanceProfile:
-            id: cluster-fdjpc-8zq9j-worker-profile
-{{- end }}
+# apiVersion: machine.openshift.io/v1beta1
+# kind: MachineSet
+# metadata:
+#   name: manual-machine-set
+#   namespace: openshift-machine-api
+#   labels:
+#     machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
+#       machine.openshift.io/cluster-api-machineset:  cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
+#   template:
+#     metadata:
+#       labels:
+#         machine.openshift.io/cluster-api-cluster: cluster-fdjpc-8zq9j
+#         machine.openshift.io/cluster-api-machine-role: worker
+#         machine.openshift.io/cluster-api-machine-type: worker
+#         machine.openshift.io/cluster-api-machineset:  cluster-fdjpc-8zq9j-baremetal-ap-southeast-1c
+#     spec:
+#       lifecycleHooks: {}
+#       metadata: {}
+#       providerSpec:
+#         value:
+#           userDataSecret:
+#             name: worker-user-data
+#           placement:
+#             availabilityZone: ap-southeast-1c
+#             region: ap-southeast-1
+#           credentialsSecret:
+#             name: aws-cloud-credentials
+#           instanceType: m5.metal
+#           metadata:
+#             creationTimestamp: null
+#           blockDevices:
+#             - ebs:
+#                 encrypted: true
+#                 iops: 0
+#                 kmsKey:
+#                   arn: ''
+#                 volumeSize: 100
+#                 volumeType: gp2
+#           securityGroups:
+#             - filters:
+#                 - name: 'tag:Name'
+#                   values:
+#                     - cluster-fdjpc-8zq9j-worker-sg
+#           kind: AWSMachineProviderConfig
+#           metadataServiceOptions: {}
+#           tags:
+#             - name: kubernetes.io/cluster/cluster-fdjpc-8zq9j
+#               value: owned
+#             - name: Stack
+#               value: project ocp4-cluster-fdjpc
+#             - name: env_type
+#               value: ocp4-cluster
+#             - name: guid
+#               value: fdjpc
+#             - name: owner
+#               value: unknown
+#             - name: platform
+#               value: RHPDS
+#             - name: uuid
+#               value: 33cd9656-11bb-5605-9656-80c942aa8c9a
+#           deviceIndex: 0
+#           ami:
+#             id: ami-0dc3e381a731ab9fc
+#           subnet:
+#             filters:
+#               - name: 'tag:Name'
+#                 values:
+#                   - cluster-fdjpc-8zq9j-private-ap-southeast-1c
+#           apiVersion: machine.openshift.io/v1beta1
+#           iamInstanceProfile:
+#             id: cluster-fdjpc-8zq9j-worker-profile
+# {{- end }}
