@@ -1,8 +1,8 @@
-{{- if .Values.global.ecp.cnv.enabled }}
+{{ if .Values.global.ecp.cnv.enabled }}
 apiVersion: hco.kubevirt.io/v1beta1
 kind: HyperConverged
 metadata:
   name: kubevirt-hyperconverged
   namespace: openshift-cnv
 spec:
-{{- end }}
+{{ end }}
