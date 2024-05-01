@@ -10,6 +10,6 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+      name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8
     referencePolicy:
       type: Source
