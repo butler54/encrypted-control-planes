@@ -1,11 +1,11 @@
 
-apiVersion: multicluster.openshift.io/v1
-kind: MultiClusterEngine
-metadata:
-  name: multiclusterengine
-spec:
-  availabilityConfig: Basic
-  targetNamespace: multicluster-engine
+# apiVersion: multicluster.openshift.io/v1
+# kind: MultiClusterEngine
+# metadata:
+#   name: multiclusterengine
+# spec:
+#   availabilityConfig: Basic
+#   targetNamespace: multicluster-engine
 #Test whether required. This should now be turned on by default.
 #   overrides:
 #     components:
