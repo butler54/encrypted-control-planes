@@ -1,4 +1,4 @@
-# {{- if .Values.global.ecp.cnv.aws.enabled }}
+{{- if .Values.global.ecp.cnv.AWSBareMetal.enabled }}
 # # WARNING
 # # WARNING
 # # WARNING

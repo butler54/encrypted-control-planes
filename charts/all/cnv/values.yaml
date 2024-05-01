@@ -5,7 +5,7 @@
 global:
   ecp:
     cnv:
-      enabled: false
+      enabled: true
       nestedVirt: false
       AWSBareMetal:
         enabled: false
