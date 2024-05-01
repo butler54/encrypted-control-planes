@@ -87,16 +87,16 @@ clusterGroup:
       project: cte
       path: charts/all/aap-cte-config
     # PRE-INSTALLED
-    # acm:
-    #   name: acm
-    #   namespace: open-cluster-management
-    #   project: local-cluster
-    #   path: common/acm
-    #   ignoreDifferences:
-    #   - group: internal.open-cluster-management.io
-    #     kind: ManagedClusterInfo
-    #     jsonPointers:
-    #     - /spec/loggingCA
+    acm:
+      name: acm
+      namespace: open-cluster-management
+      project: local-cluster
+      path: common/acm
+      ignoreDifferences:
+      - group: internal.open-cluster-management.io
+        kind: ManagedClusterInfo
+        jsonPointers:
+        - /spec/loggingCA
 
     vault:
       name: vault
