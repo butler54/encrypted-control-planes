@@ -1,19 +1,23 @@
-apiVersion: hypershift.openshift.io/v1alpha1
+apiVersion: hypershift.openshift.io/v1beta1
 kind: HostedCluster
 metadata:
+  creationTimestamp: null
   name: '{{ .Release.Name }}'
+  namespace: cluster
 spec:
+  autoscaling: {}
+  controllerAvailabilityPolicy: HighlyAvailable
   dns:
-    baseDomain: '{{ .Release.Name }}.{{ .Values.baseDomain }}'
+    baseDomain: ""
   etcd:
     managed:
       storage:
         persistentVolume:
           size: 8Gi
-          storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
-        restoreSnapshotURL: null
         type: PersistentVolume
+        storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
     managementType: Managed
+  fips: false
   networking:
     clusterNetwork:
     - cidr: 10.132.0.0/14
@@ -21,55 +25,30 @@ spec:
     serviceNetwork:
     - cidr: 172.31.0.0/16
   platform:
-    type: None
+    kubevirt:
+      baseDomainPassthrough: true
+    type: KubeVirt
   pullSecret:
-    name: hypershift-pull-secret
+    name: pull-secret
   release:
-    image: quay.io/openshift-release-dev/ocp-release:{{ .Values.ocpVersion }}-{{ .Values.ocpArch }}
-  # Fixme: this needs a dynamic key generated in vault / cluster at run time.
-  # vault is preferred as the objects are versioned.
-  # secretEncryption:
-  #   aescbc:
-  #     activeKey:
-  #       name: {{ .Release.Namespace }}-{{ .Release.Name }}-etcd-key
-  sshKey:
-    name: cluster-ssh-key
-  infraID: '{{ .Release.Namespace }}-{{ .Release.Name }}'
-  controllerAvailabilityPolicy: {{ .Values.cpPolicy }}
-  
+    image: quay.io/openshift-release-dev/ocp-release:4.14.9-x86_64
   services:
   - service: APIServer
     servicePublishingStrategy:
-      type: {{ .Values.APIPublishingStrategy }}
-      {{- if .Values.NodePortAddress  }}
-      nodePort:
-        address: {{ .Values.NodePortAddress }}
-      {{- end }}
+      type: LoadBalancer
   - service: OAuthServer
     servicePublishingStrategy:
-      type: {{ .Values.APIPublishingStrategy }}
-      {{- if .Values.NodePortAddress  }}
-      nodePort:
-        address: {{ .Values.NodePortAddress }}
-      {{- end }}
-  - service: OIDC
-    servicePublishingStrategy:
-      type: {{ .Values.APIPublishingStrategy }}
-      {{- if .Values.NodePortAddress  }}
-      nodePort:
-        address: {{ .Values.NodePortAddress }}
-      {{- end }}
+      type: Route
   - service: Konnectivity
     servicePublishingStrategy:
-      type: {{ .Values.APIPublishingStrategy }}
-      {{- if .Values.NodePortAddress  }}
-      nodePort:
-        address: {{ .Values.NodePortAddress }}
-      {{- end }}
+      type: Route
   - service: Ignition
     servicePublishingStrategy:
-      type: {{ .Values.APIPublishingStrategy }}
-      {{- if .Values.NodePortAddress  }}
-      nodePort:
-        address: {{ .Values.NodePortAddress }}
-      {{- end }}
+      type: Route
+  - service: OVNSbDb
+    servicePublishingStrategy:
+      type: Route
+  sshKey:
+    name: cluster-ssh-key
+  infraID: '{{ .Release.Namespace }}-{{ .Release.Name }}'
+---

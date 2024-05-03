@@ -42,6 +42,8 @@ templates:
 sshkey:
   key: secret/data/global/clusterssh
 
+pullSecret:
+  key: secret/data/global/ocpPull
 
 global:
   useExternalSecrets: true
