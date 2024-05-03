@@ -19,7 +19,9 @@ spec:
       rootVolume:
         persistent:
           size: 32Gi
+          storageClass: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
         type: Persistent
+        
 #      storageDriver:
 
     type: KubeVirt
