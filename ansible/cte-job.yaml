@@ -5,7 +5,7 @@
     new_cluster_id: ''
     clusterID: ''
     cm_connection_string:
-      server_ip: 13.251.63.29
+      server_ip: 18.143.78.6
       server_port: 443
       user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('nobody', True) }}"
       password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('nobody', True) }}"

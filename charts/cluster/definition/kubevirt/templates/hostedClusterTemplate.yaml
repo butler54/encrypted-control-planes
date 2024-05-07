@@ -14,8 +14,9 @@ spec:
       storage:
         persistentVolume:
           size: 8Gi
+          storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
         type: PersistentVolume
-        storageClassName: 'cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}'
+
     managementType: Managed
   fips: false
   networking:

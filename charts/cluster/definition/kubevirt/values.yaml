@@ -11,6 +11,8 @@ NodePortAddress: 10.0.0.1
 cteReg:
   key: secret/data/global/cteregistrationtoken
 
+
+
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
