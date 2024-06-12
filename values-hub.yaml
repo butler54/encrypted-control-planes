@@ -116,6 +116,7 @@ clusterGroup:
       project: local-cluster
       path: charts/all/imperative-secrets-distributor
 
+    # Not required for OCP-Vms
     # s3:
     #   name: s3-controller
     #   namespace: ack-system

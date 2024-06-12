@@ -10,8 +10,13 @@ global:
     # leave blank for an internal deployment or define a full URL.
     aapURL: ''
 
-    # IP for a CTM server. Assumes 
-    cipherTrustIP: '18.143.78.6'
+
+    ctm:
+      onCluster: true
+      ip: '18.143.78.6'
+    # IP for a CTM server. Assumes
+
+
 
     # Whether or not to deploy OCP-V on a BM instance for AWS.
     # Assumes ROSA is not being used for the deployment.

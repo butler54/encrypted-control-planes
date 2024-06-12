@@ -1,0 +1,9 @@
+# Default values for AWS S3 Controller.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  ecp:
+    ctm:
+      onCluster: true
+      ip: ''

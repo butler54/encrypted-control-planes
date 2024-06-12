@@ -18,7 +18,7 @@ templates:
 - name: kubevirt-single-node
   definition: 'kubevirt'
   cpPolicy: SingleReplica
-  nodes: "1"
+  nodes: "5"
   bootstrap: false
 
 - name: kubevirt-three-node
