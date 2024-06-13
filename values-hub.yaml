@@ -147,11 +147,6 @@ clusterGroup:
       project: cluster
       path: charts/all/encrypted-clusters-aas
 
-    aap-config:
-      name: aap-config
-      namespace: ansible-automation-platform
-      project: local-cluster
-      path: charts/all/aap-config
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
