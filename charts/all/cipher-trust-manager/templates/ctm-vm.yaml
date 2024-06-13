@@ -3,44 +3,45 @@ kind: VirtualMachine
 metadata:
   creationTimestamp: null
   labels:
-    kubevirt.io/vm: ciphertrust-vm
-  name: ciphertrust-vm
+    kubevirt.io/vm: vm-fedora-datavolume1
+  name: vm-fedora-datavolume 1
   namespace: cte-vm
 spec:
   dataVolumeTemplates:
   - metadata:
       creationTimestamp: null
-      name: ciphertrust-dv
+      name: fedora-dv1 
     spec:
       storage:
         resources:
           requests:
-            storage: 20Gi
+            storage: 10Gi
       source:
         http:
-          url: "https://www.ciphertrust.io/files/Virtual_CipherTrust_Manager_OpenStack.qcow2"
+          url: "https://mirror.arizona.edu/fedora/linux/releases/35/Cloud/x86_64/images/Fedora-Cloud-Base-35-1.2.x86_64.qcow2" 
           secretRef: data-source-secret 
-          certConfigMap: tls-certs  
+          certConfigMap: tls-certs 
     status: {}
   running: true
   template:
     metadata:
       creationTimestamp: null
       labels:
-        kubevirt.io/vm: ciphertrust-vm
+        kubevirt.io/vm: vm-fedora-datavolume1
+    spec:
       domain:
         devices:
           disks:
           - disk:
               bus: virtio
-            name: datavolumedisk1
+            name: datavolumedisk11
         machine:
           type: ""
         resources:
           requests:
-            memory: 4.0Gi
+            memory: 1.5Gi
       terminationGracePeriodSeconds: 180
       volumes:
       - dataVolume:
-          name: ciphertrust-dv
-        name: datavolumedisk1
+          name: fedora-dv
+        name: datavolumedisk11
