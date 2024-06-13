@@ -31,7 +31,8 @@ global:
         region: ''
         availabilityZone: ''
     # Base storage class to use. 
-    storageClass: gp3-csi
+    storageClass: ocs-storagecluster-ceph-rbd
+    storageClassBind: Immediate
 
     APIPublishingStrategy: NodePort
     baseDomain: 2g96t.sandbox3015.opentlc.com

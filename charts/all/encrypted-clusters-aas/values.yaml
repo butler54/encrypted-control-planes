@@ -9,6 +9,7 @@ templates:
   nodes: "0"
   bootstrap: false
 
+
 - name: control-plane-only-ha
   definition: 'bare-cp'
   cpPolicy: HighlyAvailable
@@ -53,7 +54,10 @@ global:
     APIPublishingStrategy: NodePort
     baseDomain: 2g96t.sandbox3015.opentlc.com
     NodePortAddress: 10.0.0.1
-
+    storageClass: ''
+    storageClassBind: Immediate
+    ctm:
+      ip: ''
 
 secretStore:
   name: vault-backend

@@ -148,12 +148,12 @@ clusterGroup:
       namespace: cluster
       project: cluster
       path: charts/all/encrypted-clusters-aas
-
-    cipher-trust-manager:
-      name: cipher-trust-manager
-      project: cte-vm
-      namespace: cte-vm
-      path: charts/all/cipher-trust-manager
+      # REQUIRED TO INSTALL THE CTM ON CLUSTER
+      # cipher-trust-manager:
+      #   name: cipher-trust-manager
+      #   project: cte-vm
+      #   namespace: cte-vm
+      #   path: charts/all/cipher-trust-manager
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
