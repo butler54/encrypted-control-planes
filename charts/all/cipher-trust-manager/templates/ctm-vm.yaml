@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     kubevirt.io/vm: vm-fedora-datavolume1
-  name: vm-fedora-datavolume 1
+  name: vm-fedora-datavolume1
   namespace: cte-vm
 spec:
   dataVolumeTemplates:
