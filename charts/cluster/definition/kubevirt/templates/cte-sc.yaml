@@ -4,12 +4,12 @@ metadata:
   name: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
 provisioner: csi.cte.cpl.thalesgroup.com
 reclaimPolicy: Delete
-volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode: Immediate #WaitForFirstConsumer
 allowVolumeExpansion: true
 parameters:
 
   # Domain name or IP address of the CipherTrust Manager (Required)
-  key_manager_addr: '18.143.78.6'
+  key_manager_addr: '3.27.244.199'
 
   # Name of the CipherTrust Manager K8s Storage Group. (Required)
   k8_storage_group: sg-{{ .Release.Namespace }}-{{ .Release.Name }}
