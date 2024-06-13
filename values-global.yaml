@@ -12,8 +12,8 @@ global:
 
 
     ctm:
-      onCluster: true
-      ip: '18.143.78.6'
+      onCluster: false
+      ip: '3.27.244.199'
     # IP for a CTM server. Assumes
 
 
