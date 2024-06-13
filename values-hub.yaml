@@ -149,7 +149,7 @@ clusterGroup:
       project: cluster
       path: charts/all/encrypted-clusters-aas
 
-   cipher-trust-manager:
+    cipher-trust-manager:
       name: cipher-trust-manager
       project: cte-vm
       namespace: cte-vm
