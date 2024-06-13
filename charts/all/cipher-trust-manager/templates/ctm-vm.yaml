@@ -43,5 +43,5 @@ spec:
       terminationGracePeriodSeconds: 180
       volumes:
       - dataVolume:
-          name: fedora-dv
+          name: fedora-dv1
         name: datavolumedisk11
