@@ -18,7 +18,9 @@ spec:
             storage: 20Gi
       source:
         http:
-          url: "https://www.ciphertrust.io/files/Virtual_CipherTrust_Manager_OpenStack.qcow2" 
+          url: "https://www.ciphertrust.io/files/Virtual_CipherTrust_Manager_OpenStack.qcow2"
+          secretRef: data-source-secret 
+          certConfigMap: tls-certs  
     status: {}
   running: true
   template:
