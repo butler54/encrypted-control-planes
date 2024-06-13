@@ -1,0 +1,47 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: null
+  labels:
+    kubevirt.io/vm: vm-fedora-datavolume
+  name: vm-fedora-datavolume 
+  namespace: cte-vm
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      creationTimestamp: null
+      name: fedora-dv 
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 10Gi
+      source:
+        http:
+          url: "https://mirror.arizona.edu/fedora/linux/releases/35/Cloud/x86_64/images/Fedora-Cloud-Base-35-1.2.x86_64.qcow2" 
+          secretRef: data-source-secret 
+          certConfigMap: tls-certs 
+    status: {}
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/vm: vm-fedora-datavolume
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk1
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 1.5Gi
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: fedora-dv
+        name: datavolumedisk1
