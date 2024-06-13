@@ -15,6 +15,7 @@ clusterGroup:
   - multicluster-engine
   - openshift-cnv
   - cte
+  - cte-vm
   - cluster
   - ansible-automation-platform
 
@@ -63,6 +64,7 @@ clusterGroup:
   - s3
   - hypershift
   - cte
+  - cte-vm
   - test-config
   - default
   - cnv
@@ -147,6 +149,11 @@ clusterGroup:
       project: cluster
       path: charts/all/encrypted-clusters-aas
 
+   cipher-trust-manager:
+      name: cipher-trust-manager
+      project: cte-vm
+      namespace: cte-vm
+      path: charts/all/cipher-trust-manager
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
