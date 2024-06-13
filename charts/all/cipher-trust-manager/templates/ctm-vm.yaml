@@ -1,0 +1,44 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: null
+  labels:
+    kubevirt.io/vm: ciphertrust-vm
+  name: ciphertrust-vm
+  namespace: cte-vm
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      creationTimestamp: null
+      name: ciphertrust-dv
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 20Gi
+      source:
+        http:
+          url: "https://www.ciphertrust.io/files/Virtual_CipherTrust_Manager_OpenStack.qcow2" 
+    status: {}
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/vm: ciphertrust-vm
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk1
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 4.0Gi
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: ciphertrust-dv
+        name: datavolumedisk1
