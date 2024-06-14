@@ -5,7 +5,7 @@
     new_cluster_id: ''
     clusterID: ''
     cm_connection_string:
-      server_ip: 3.27.244.199 ## HARDCODED 
+      server_ip: 3.27.244.199
       server_port: 443
       user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('nobody', True) }}"
       password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('nobody', True) }}"
@@ -14,6 +14,10 @@
 
 
   tasks:
+  - name: Print user IP
+    debug:
+      msg: "password: {{ cm_connection_string.server_ip }}"
+
   - name: Nasty - print user
     debug:
       msg: "User: {{ cm_connection_string.user }}"
@@ -146,7 +150,7 @@
       description: "CSI storage group created via ansible"
     register: csi_sg
 
-  - name: "Add guarpolicy to the CSI Storage Group"
+  - name: "Add guardfpolicy to the CSI Storage Group"
     thalesgroup.ciphertrust.cte_csi_storage_group:
       localNode: "{{ cm_connection_string }}"
       op_type: add_guard_point

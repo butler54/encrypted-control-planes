@@ -1,0 +1,4 @@
+FROM registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+COPY ./cte-job.yaml cte-job.yaml
+RUN ansible-galaxy collection install thalesgroup.ciphertrust
+
