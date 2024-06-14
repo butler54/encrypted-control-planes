@@ -21,6 +21,6 @@ parameters:
   # Time in minutes to wait before unregistering from the CipherTrust Manager
   # once all of the volumes have been unguarded. Parameter must be added as a string
   # integer value. Default is 10 minutes. (Optional)
-
+  source_storage_class: "ocs-storagecluster-ceph-rbd"
   allow_source_pvc_delete: "true"
   registration_period: "10"

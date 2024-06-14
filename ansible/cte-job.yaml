@@ -2,13 +2,13 @@
   hosts: localhost
   connection: local
   vars:
-    new_cluster_id: ''
+    new_cluster_id: 'a223'
     clusterID: ''
     cm_connection_string:
       server_ip: 3.27.244.199
       server_port: 443
-      user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('nobody', True) }}"
-      password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('nobody', True) }}"
+      user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('admin', True) }}"
+      password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('', True) }}"
       verify: False
       auth_domain_path:
 
