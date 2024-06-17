@@ -19,7 +19,8 @@ spec:
       rootVolume:
         persistent:
           size: 32Gi
-          storageClass: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
+          storageClass: ocs-storagecluster-ceph-rbd
+          #storageClass: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
         type: Persistent
         
 #      storageDriver:
@@ -27,7 +28,7 @@ spec:
     type: KubeVirt
   release:
     image: quay.io/openshift-release-dev/ocp-release:4.14.9-x86_64
-  replicas: 3
+  replicas: 1
 status:
   replicas: 0
 ---
