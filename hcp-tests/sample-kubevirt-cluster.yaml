@@ -2,6 +2,6 @@ apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplateInstance
 metadata:
   name: hsclsempty
-  namespace: clusters
+  namespace: cluster
 spec:
   clusterTemplateRef: hypershift-cluster
