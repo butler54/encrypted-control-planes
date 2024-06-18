@@ -6,4 +6,5 @@ organisation: CTE
 
 global:
   ecp:
-    cipherTrustIP: ''
+    ctm:
+      ip: ''

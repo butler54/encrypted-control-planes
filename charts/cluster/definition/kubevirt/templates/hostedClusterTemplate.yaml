@@ -6,7 +6,7 @@ metadata:
   namespace: cluster
 spec:
   autoscaling: {}
-  controllerAvailabilityPolicy: HighlyAvailable
+  controllerAvailabilityPolicy: {{ .Values.cpPolicy }}
   dns:
     baseDomain: ""
   etcd:
@@ -32,7 +32,7 @@ spec:
   pullSecret:
     name: pull-secret
   release:
-    image: quay.io/openshift-release-dev/ocp-release:4.14.9-x86_64
+    image: 'quay.io/openshift-release-dev/ocp-release:{{ .Values.ocpVersion }}-x86_64'
   services:
   - service: APIServer
     servicePublishingStrategy:

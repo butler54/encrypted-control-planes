@@ -2,10 +2,10 @@
   hosts: localhost
   connection: local
   vars:
-    new_cluster_id: 'a223'
-    clusterID: ''
+    new_cluster_id: ''
+    server_ip: ''
     cm_connection_string:
-      server_ip: 3.27.244.199
+      server_ip: {{ server_ip }}
       server_port: 443
       user: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_USERNAME')| default('admin', True) }}"
       password: "{{ lookup('ansible.builtin.env', 'ANSIBLE_NET_PASSWORD')| default('', True) }}"
@@ -14,17 +14,17 @@
 
 
   tasks:
-  - name: Print user IP
+  - name: Print CTM IP
     debug:
       msg: "password: {{ cm_connection_string.server_ip }}"
 
-  - name: Nasty - print user
-    debug:
-      msg: "User: {{ cm_connection_string.user }}"
+  # - name: Nasty - print user
+  #   debug:
+  #     msg: "User: {{ cm_connection_string.user }}"
 
-  - name: Nasty - print pass
-    debug:
-      msg: "password: {{ cm_connection_string.password }}"
+  # - name: Nasty - print pass
+  #   debug:
+  #     msg: "password: {{ cm_connection_string.password }}"
 
   # - name: Get external IP address using online tool
   #   uri:
@@ -150,6 +150,7 @@
       description: "CSI storage group created via ansible"
     register: csi_sg
 
+  # This step 'fails' as a response code of 201 was not expected.
   - name: "Add guardfpolicy to the CSI Storage Group"
     thalesgroup.ciphertrust.cte_csi_storage_group:
       localNode: "{{ cm_connection_string }}"

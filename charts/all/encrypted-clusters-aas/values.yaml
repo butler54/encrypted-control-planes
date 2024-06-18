@@ -4,14 +4,14 @@ project: cluster
 
 templates:
 - name: control-plane-only
-  definition: 'bare-cp'
+  definition: 'kubevirt'
   cpPolicy: SingleReplica
   nodes: "0"
   bootstrap: false
 
 
 - name: control-plane-only-ha
-  definition: 'bare-cp'
+  definition: 'kubevirt'
   cpPolicy: HighlyAvailable
   nodes: "0"
   bootstrap: false
@@ -19,12 +19,12 @@ templates:
 - name: kubevirt-single-node
   definition: 'kubevirt'
   cpPolicy: SingleReplica
-  nodes: "5"
+  nodes: "1"
   bootstrap: false
 
 - name: kubevirt-three-node
   definition: 'kubevirt'
-  cpPolicy: SingleReplica
+  cpPolicy: HighlyAvailable
   nodes: "3"
   bootstrap: false
 
@@ -51,18 +51,20 @@ global:
   targetRevision: main
   repoURL: 'https://github.com/butler54/encrypted-control-planes.git'
   ecp:
+    # This is used for AWS
     APIPublishingStrategy: NodePort
     baseDomain: 2g96t.sandbox3015.opentlc.com
     NodePortAddress: 10.0.0.1
+    # 
     storageClass: ''
     storageClassBind: Immediate
+    encryptedDataPlane: false
     ctm:
       ip: ''
 
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
-
 
 # {{ if .Values.foo.bar }}
 # {{ .Values.foo.bar }}

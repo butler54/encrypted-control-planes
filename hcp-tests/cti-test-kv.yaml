@@ -1,0 +1,7 @@
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplateInstance
+metadata:
+  name: mycluster
+  namespace: cluster
+spec:
+  clusterTemplateRef: hypershift-kubevirt-single-node

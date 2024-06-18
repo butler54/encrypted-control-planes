@@ -1,25 +1,23 @@
-# Default values for demo-template.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-ocpVersion: 4.14.3
-baseDomain: example.com
-ocpArch: x86_64
-# must override
-NodePortAddress: 10.0.0.1
-
-cteReg:
-  key: secret/data/global/cteregistrationtoken
+# WARNING!
+# WARNING!
+# This is not directly orchestrated via the validated patterns operator. 
+# As a result it does not direclty inherit from values-global or similar.
+# Parameters should be 'explicitly' passed via helm parameters via 
 
 
+## Keep this file flat due to parameter passing elsehwere
 
+unencryptedStorageClass: ''
+storageClassBind: ''
+encryptDataPlane: false
+ctmIP: ''
+ocpVersion: 4.14.9
+cpPolicy: ''
+
+cteRegKey: secret/data/global/cteregistrationtoken
+
+
+# FIXME: This is effectively hardcoded here
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
-
-providerStorageClass: gp3-csi
-
-global:
-  ecp:
-    cipherTrustIP: ''
-    storageClass: gp3-csi

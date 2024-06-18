@@ -43,13 +43,25 @@ spec:
             value: {{ .cpPolicy }}
           - name: nodepoolReplicas
             value: "{{ toString .nodes }}"
-
-          - name: APIPublishingStrategy
-            value: {{ $.Values.APIPublishingStrategy }}
+          - name: ctmIP
+            value: {{ $.Values.global.ecp.ctm.ip }}
+          - name: unencryptedStorageClass
+            value: {{ $.Values.global.ecp.storageClass }}
+          - name: storageClassBind
+            value: {{ $.Values.global.ecp.storageClassBind }}
+          - name: encryptDataPlane
+            value: {{ $.Values.global.ecp.encryptedDataPlane }}
+          # Values here are used for aws clusters only
           - name: baseDomain # Fixme should be different
-            value: {{ $.Values.baseDomain }}
+            value: {{ $.Values.global.ecp.baseDomain }}
+          - name: APIPublishingStrategy
+            value: {{ $.Values.global.ecp.APIPublishingStrategy }}
           - name: NodePortAddress
-            value: {{ $.Values.NodePortAddress }}
+            value: {{ $.Values.global.ecp.NodePortAddress }}
+          - name: storageClass
+            value: {{ $.Values.global.ecp.storageClass }}
+          - name: encryptedDataPlane
+            value: {{ $.Values.global.ecp.encryptedDataPlane }}
       syncPolicy:
         automated: {}
 

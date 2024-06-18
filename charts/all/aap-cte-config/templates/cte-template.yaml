@@ -17,3 +17,4 @@ spec:
   ask_variables_on_launch: true
   extra_vars:
     new_cluster_id: 'placeholder'
+    server_ip: {{ .Values.global.ecp.ctm.ip }}

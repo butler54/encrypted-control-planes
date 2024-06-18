@@ -10,4 +10,5 @@ spec:
   job_template_name: cte-key-job
   extra_vars:
     new_cluster_id: '{{ .Release.Name }}'
+    server_ip: {{ .Values.ctmIP }}
   

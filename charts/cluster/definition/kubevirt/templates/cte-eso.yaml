@@ -17,4 +17,4 @@ spec:
       type: Opaque
   dataFrom:
   - extract:
-      key: {{ .Values.cteReg.key }}
+      key: {{ .Values.cteRegKey }}
