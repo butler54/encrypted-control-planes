@@ -4,7 +4,7 @@ metadata:
   name: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
 provisioner: csi.cte.cpl.thalesgroup.com
 reclaimPolicy: Delete
-volumeBindingMode: Immediate #WaitForFirstConsumer
+volumeBindingMode: {{ .Values.storageClassBind }} #WaitForFirstConsumer
 allowVolumeExpansion: true
 parameters:
 

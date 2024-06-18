@@ -14,8 +14,7 @@ global:
     ctm:
       onCluster: false
       ip: '3.27.244.199'
-    # IP for a CTM server. Assumes
-
+    # IP for a CTM server. Assumes the CTM server is not on cluster.
 
 
     # Whether or not to deploy OCP-V on a BM instance for AWS.
