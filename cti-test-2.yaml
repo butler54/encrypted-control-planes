@@ -1,0 +1,8 @@
+apiVersion: clustertemplate.openshift.io/v1alpha1
+kind: ClusterTemplateInstance
+metadata:
+  name: kubevirt-test-235
+  namespace: cluster
+spec:
+  clusterTemplateRef: hypershift-control-plane-only-ha
+
