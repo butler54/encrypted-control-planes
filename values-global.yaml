@@ -13,7 +13,7 @@ global:
 
     ctm:
       onCluster: false
-      ip: '3.27.244.199'
+      ip: '52.62.109.252'
     # IP for a CTM server. Assumes the CTM server is not on cluster.
 
 

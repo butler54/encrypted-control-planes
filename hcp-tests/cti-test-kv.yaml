@@ -1,7 +1,7 @@
 apiVersion: clustertemplate.openshift.io/v1alpha1
 kind: ClusterTemplateInstance
 metadata:
-  name: myclusteraab
+  name: myclusteraaaaab
   namespace: cluster
 spec:
   clusterTemplateRef: hypershift-kubevirt-three-node

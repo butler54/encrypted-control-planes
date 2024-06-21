@@ -5,7 +5,7 @@ metadata:
   name: ansible-project
   namespace: {{ .Values.aapNamespace }}
 spec:
-  branch: main
+  branch: {{ .Values.global.targetRevision }}
   connection_secret: {{ .Values.connectionSecret }}
   description: "Ansible project to wrap jobs interacting with the ciphetrust manager"
   name: cte-automation-project
