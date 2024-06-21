@@ -58,8 +58,6 @@ spec:
             value: {{ $.Values.global.ecp.NodePortAddress }}
           - name: storageClass
             value: {{ $.Values.global.ecp.storageClass }}
-          - name: encryptedDataPlane
-            value: {{ toString $.Values.global.ecp.encryptedDataPlane }}
       syncPolicy:
         automated: {}
 
