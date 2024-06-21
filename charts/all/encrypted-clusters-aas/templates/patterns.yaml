@@ -49,8 +49,6 @@ spec:
             value: {{ $.Values.global.ecp.storageClass }}
           - name: storageClassBind
             value: {{ $.Values.global.ecp.storageClassBind }}
-          - name: encryptDataPlane
-            value: "{{ toString $.Values.global.ecp.encryptedDataPlane }}"
           # Values here are used for aws clusters only
           - name: baseDomain # Fixme should be different
             value: {{ $.Values.global.ecp.baseDomain }}
@@ -61,7 +59,7 @@ spec:
           - name: storageClass
             value: {{ $.Values.global.ecp.storageClass }}
           - name: encryptedDataPlane
-            value: {{ $.Values.global.ecp.encryptedDataPlane }}
+            value: {{ toString $.Values.global.ecp.encryptedDataPlane }}
       syncPolicy:
         automated: {}
 
