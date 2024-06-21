@@ -19,11 +19,7 @@ spec:
       rootVolume:
         persistent:
           size: 32Gi
-{{ if .Values.global.ecp.encryptedDataPlane }}
-          storageClass: cte-sc-{{ .Release.Namespace }}-{{ .Release.Name }}
-{{ else }}
           storageClass: {{ .Values.unencryptedStorageClass }}
-{{ end}}
         type: Persistent
     type: KubeVirt
   release:

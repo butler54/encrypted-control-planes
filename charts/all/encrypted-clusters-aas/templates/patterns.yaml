@@ -50,7 +50,7 @@ spec:
           - name: storageClassBind
             value: {{ $.Values.global.ecp.storageClassBind }}
           - name: encryptDataPlane
-            value: {{ $.Values.global.ecp.encryptedDataPlane }}
+            value: "{{ tostring $.Values.global.ecp.encryptedDataPlane }}"
           # Values here are used for aws clusters only
           - name: baseDomain # Fixme should be different
             value: {{ $.Values.global.ecp.baseDomain }}
